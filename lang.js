@@ -4,7 +4,7 @@
   function detectDefault() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved === 'en' || saved === 'zh') return saved;
-    return (navigator.language || '').toLowerCase().startsWith('zh') ? 'zh' : 'en';
+   return 'en';
   }
 
   function applyLang(lang) {
