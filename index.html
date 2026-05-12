@@ -8,6 +8,20 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="intro" data-intro>
+    <button class="intro-skip" type="button" data-en="Skip ↘" data-zh="跳过 ↘">Skip ↘</button>
+    <svg class="intro-canopy" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <image href="images/background.png" x="0" y="0" width="1280" height="720"/>
+      <g class="intro-orange-pos" data-orange="1" transform="translate(501 409.5)">
+        <g class="intro-orange-fall">
+          <g class="intro-orange">
+            <image href="images/orange.png" x="-70" y="-68.5" width="140" height="137"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+
   <header class="nav">
     <a href="index.html" class="nav-logo">Cheng Min</a>
     <nav class="nav-links">
@@ -35,48 +49,84 @@
 
   <section id="work" class="work">
     <h2 class="section-title" data-en="Selected Games" data-zh="精选游戏作品">Selected Games</h2>
-    <div class="bento">
-      <a href="#" class="bento-item bento-feature">
-        <div class="bento-thumb bento-thumb-1"></div>
-        <div class="bento-meta">
-          <h3 data-en="Featured Project" data-zh="代表作">Featured Project</h3>
-          <p data-en="Card RPG · 2024 · Lead Designer" data-zh="卡牌 RPG · 2024 · 主设计">Card RPG · 2024 · Lead Designer</p>
-        </div>
+
+    <div class="showcase" data-marquee>
+      <div class="showcase-track">
+        <a href="#" class="showcase-card">
+          <div class="showcase-thumb showcase-thumb-1"></div>
+          <div class="showcase-overlay">
+            <h3 data-en="Featured Project" data-zh="代表作">Featured Project</h3>
+            <p data-en="AVG · Twine" data-zh="文字冒险 · Twine">AVG · Twine</p>
+          </div>
+        </a>
+        <a href="#" class="showcase-card">
+          <div class="showcase-thumb showcase-thumb-2"></div>
+          <div class="showcase-overlay">
+            <h3 data-en="Project Two" data-zh="项目二">Project Two</h3>
+            <p data-en="Card RPG · Unity" data-zh="卡牌 RPG · Unity">Card RPG · Unity</p>
+          </div>
+        </a>
+        <a href="#" class="showcase-card">
+          <div class="showcase-thumb showcase-thumb-3"></div>
+          <div class="showcase-overlay">
+            <h3 data-en="Project Three" data-zh="项目三">Project Three</h3>
+            <p data-en="Action · Unreal" data-zh="动作 · Unreal">Action · Unreal</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <h3 class="section-subtitle" data-en="All Projects" data-zh="全部项目">All Projects</h3>
+    <div class="grid-all">
+      <a href="#" class="grid-item">
+        <div class="grid-thumb grid-thumb-1"></div>
+        <h4 data-en="Project 1" data-zh="项目 1">Project 1</h4>
+        <p data-en="AVG · Twine" data-zh="文字冒险 · Twine">AVG · Twine</p>
       </a>
-      <a href="#" class="bento-item bento-side">
-        <div class="bento-thumb bento-thumb-2"></div>
-        <div class="bento-meta">
-          <h3 data-en="Project Two" data-zh="项目二">Project Two</h3>
-          <p data-en="System design · 2023" data-zh="系统设计 · 2023">System design · 2023</p>
-        </div>
+      <a href="#" class="grid-item">
+        <div class="grid-thumb grid-thumb-2"></div>
+        <h4 data-en="Project 2" data-zh="项目 2">Project 2</h4>
+        <p data-en="Card RPG · Unity" data-zh="卡牌 RPG · Unity">Card RPG · Unity</p>
       </a>
-      <a href="#" class="bento-item bento-side">
-        <div class="bento-thumb bento-thumb-3"></div>
-        <div class="bento-meta">
-          <h3 data-en="Project Three" data-zh="项目三">Project Three</h3>
-          <p data-en="Character design · 2023" data-zh="角色设计 · 2023">Character design · 2023</p>
-        </div>
+      <a href="#" class="grid-item">
+        <div class="grid-thumb grid-thumb-3"></div>
+        <h4 data-en="Project 3" data-zh="项目 3">Project 3</h4>
+        <p data-en="Action · Unreal" data-zh="动作 · Unreal">Action · Unreal</p>
       </a>
-      <a href="#" class="bento-item bento-small">
-        <div class="bento-thumb bento-thumb-4"></div>
-        <div class="bento-meta">
-          <h3 data-en="Project Four" data-zh="项目四">Project Four</h3>
-          <p data-en="UI · 2022" data-zh="UI · 2022">UI · 2022</p>
-        </div>
+      <a href="#" class="grid-item">
+        <div class="grid-thumb grid-thumb-4"></div>
+        <h4 data-en="Project 4" data-zh="项目 4">Project 4</h4>
+        <p data-en="Puzzle · Unity" data-zh="解谜 · Unity">Puzzle · Unity</p>
       </a>
-      <a href="#" class="bento-item bento-small">
-        <div class="bento-thumb bento-thumb-5"></div>
-        <div class="bento-meta">
-          <h3 data-en="Project Five" data-zh="项目五">Project Five</h3>
-          <p data-en="3D character · 2022" data-zh="3D 角色 · 2022">3D character · 2022</p>
-        </div>
+      <a href="#" class="grid-item">
+        <div class="grid-thumb grid-thumb-5"></div>
+        <h4 data-en="Project 5" data-zh="项目 5">Project 5</h4>
+        <p data-en="Visual Novel · Ren'Py" data-zh="视觉小说 · Ren'Py">Visual Novel · Ren'Py</p>
       </a>
-      <a href="#" class="bento-item bento-small">
-        <div class="bento-thumb bento-thumb-6"></div>
-        <div class="bento-meta">
-          <h3 data-en="Project Six" data-zh="项目六">Project Six</h3>
-          <p data-en="Concept · 2022" data-zh="概念设计 · 2022">Concept · 2022</p>
-        </div>
+      <a href="#" class="grid-item">
+        <div class="grid-thumb grid-thumb-6"></div>
+        <h4 data-en="Project 6" data-zh="项目 6">Project 6</h4>
+        <p data-en="Roguelike · Godot" data-zh="Roguelike · Godot">Roguelike · Godot</p>
+      </a>
+      <a href="#" class="grid-item">
+        <div class="grid-thumb grid-thumb-7"></div>
+        <h4 data-en="Project 7" data-zh="项目 7">Project 7</h4>
+        <p data-en="Strategy · Unity" data-zh="策略 · Unity">Strategy · Unity</p>
+      </a>
+      <a href="#" class="grid-item">
+        <div class="grid-thumb grid-thumb-8"></div>
+        <h4 data-en="Project 8" data-zh="项目 8">Project 8</h4>
+        <p data-en="Platformer · Construct" data-zh="平台跳跃 · Construct">Platformer · Construct</p>
+      </a>
+      <a href="#" class="grid-item">
+        <div class="grid-thumb grid-thumb-9"></div>
+        <h4 data-en="Project 9" data-zh="项目 9">Project 9</h4>
+        <p data-en="RPG · RPG Maker" data-zh="角色扮演 · RPG Maker">RPG · RPG Maker</p>
+      </a>
+      <a href="#" class="grid-item">
+        <div class="grid-thumb grid-thumb-10"></div>
+        <h4 data-en="Project 10" data-zh="项目 10">Project 10</h4>
+        <p data-en="Sim · GameMaker" data-zh="模拟 · GameMaker">Sim · GameMaker</p>
       </a>
     </div>
   </section>
@@ -92,5 +142,161 @@
     </div>
   </footer>
   <script src="lang.js"></script>
+  <script>
+    (function initShowcase() {
+      const showcase = document.querySelector('[data-marquee]');
+      if (!showcase) return;
+      const track = showcase.querySelector('.showcase-track');
+      if (!track) return;
+
+      // Duplicate cards so the track can loop seamlessly
+      Array.from(track.children).forEach((card) => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.setAttribute('tabindex', '-1');
+        track.appendChild(clone);
+      });
+
+      let position = 0;
+      const speed = 0.4;
+      let hoverPaused = false;
+      let offscreenPaused = false;
+      let isDragging = false;
+      let didDrag = false;
+      let dragStartX = 0;
+      let dragStartPos = 0;
+      let halfWidth = 0;
+
+      function measure() { halfWidth = track.scrollWidth / 2; }
+      measure();
+      window.addEventListener('resize', measure);
+
+      function paused() { return hoverPaused || offscreenPaused || isDragging; }
+
+      function step() {
+        if (!paused() && halfWidth > 0) {
+          position -= speed;
+          if (position <= -halfWidth) position += halfWidth;
+          track.style.transform = 'translateX(' + position + 'px)';
+        }
+        requestAnimationFrame(step);
+      }
+
+      showcase.addEventListener('mouseenter', () => { hoverPaused = true; });
+      showcase.addEventListener('mouseleave', () => { hoverPaused = false; });
+
+      showcase.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        didDrag = false;
+        dragStartX = e.clientX;
+        dragStartPos = position;
+        showcase.classList.add('is-dragging');
+        try { showcase.setPointerCapture(e.pointerId); } catch (_) {}
+      });
+      showcase.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - dragStartX;
+        if (Math.abs(dx) > 5) didDrag = true;
+        let next = dragStartPos + dx;
+        while (next <= -halfWidth) next += halfWidth;
+        while (next > 0) next -= halfWidth;
+        position = next;
+        track.style.transform = 'translateX(' + position + 'px)';
+      });
+      function endDrag() {
+        isDragging = false;
+        showcase.classList.remove('is-dragging');
+      }
+      showcase.addEventListener('pointerup', endDrag);
+      showcase.addEventListener('pointercancel', endDrag);
+
+      // Swallow the click that follows a drag so links don't fire mid-scrub
+      showcase.addEventListener('click', (e) => {
+        if (didDrag) { e.preventDefault(); e.stopPropagation(); }
+      }, true);
+
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          offscreenPaused = !entries[0].isIntersecting;
+        });
+        io.observe(showcase);
+      }
+
+      requestAnimationFrame(step);
+    })();
+  </script>
+  <script>
+    (function initIntro() {
+      const intro = document.querySelector('[data-intro]');
+      if (!intro) return;
+
+      const STORAGE_KEY = 'intro-seen';
+      const isReturning = localStorage.getItem(STORAGE_KEY) === '1';
+      if (isReturning) intro.setAttribute('data-show-skip', 'true');
+
+      document.body.classList.add('intro-playing');
+      window.scrollTo(0, 0);
+      localStorage.setItem(STORAGE_KEY, '1');
+
+      let finished = false;
+      function finish() {
+        if (finished) return;
+        finished = true;
+        intro.classList.add('is-finishing');
+        setTimeout(() => {
+          intro.remove();
+          document.body.classList.remove('intro-playing');
+        }, 700);
+      }
+
+      intro.querySelector('.intro-skip').addEventListener('click', (e) => {
+        e.stopPropagation();
+        finish();
+      });
+
+      const orange1 = intro.querySelector('[data-orange="1"]');
+      const orangeImg = orange1 && orange1.querySelector('.intro-orange');
+      const orangeFall = orange1 && orange1.querySelector('.intro-orange-fall');
+
+      let triggered = false;
+      function triggerFall() {
+        if (triggered || !orangeImg || !orangeFall) return;
+        triggered = true;
+
+        // Read the orange's current rotation from the running sway animation
+        const m = getComputedStyle(orangeImg).transform.match(/matrix\(([^)]+)\)/);
+        let startRot = 0;
+        if (m) {
+          const p = m[1].split(',').map(parseFloat);
+          startRot = Math.atan2(p[1], p[0]) * 180 / Math.PI;
+        }
+
+        // Direction follows the tilt: right-leaning → fly right, left-leaning → fly left
+        const dir = startRot >= 0 ? 1 : -1;
+
+        // Lock the sway-driven rotation as inline style, then disable sway via class.
+        // The fall keyframes below add a *relative* rotation on top.
+        orangeImg.style.transform = 'rotate(' + startRot + 'deg)';
+        orange1.classList.add('is-falling');
+
+        // Parabolic trajectory: X linear (momentum), Y accelerating (gravity), spin 572°
+        const kfs = [
+          { transform: 'translate(0px, 0px) rotate(0deg)' },
+          { transform: 'translate(' + (20*dir)  + 'px, 22px)  rotate(' + (72*dir)  + 'deg)' },
+          { transform: 'translate(' + (40*dir)  + 'px, 90px)  rotate(' + (172*dir) + 'deg)' },
+          { transform: 'translate(' + (60*dir)  + 'px, 210px) rotate(' + (292*dir) + 'deg)' },
+          { transform: 'translate(' + (80*dir)  + 'px, 380px) rotate(' + (432*dir) + 'deg)' },
+          { transform: 'translate(' + (100*dir) + 'px, 600px) rotate(' + (572*dir) + 'deg)' }
+        ];
+        const fall = orangeFall.animate(kfs, { duration: 1400, fill: 'forwards', easing: 'linear' });
+        fall.onfinish = () => setTimeout(finish, 150);
+      }
+
+      intro.addEventListener('click', (e) => {
+        if (e.target.closest('.intro-skip')) return;
+        triggerFall();
+      });
+    })();
+  </script>
 </body>
 </html>
