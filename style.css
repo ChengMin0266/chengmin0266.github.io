@@ -221,7 +221,7 @@ a:hover { opacity: 0.6; }
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,0.75) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 25%, rgba(0,0,0,0.8) 100%);
   pointer-events: none;
 }
 .showcase-overlay {
@@ -237,17 +237,24 @@ a:hover { opacity: 0.6; }
   font-size: clamp(26px, 2.8vw, 40px);
   font-weight: 400;
   line-height: 1.1;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
-.showcase-overlay p {
+.showcase-desc {
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.45;
+  opacity: 0.9;
+  margin-bottom: 12px;
+  max-width: 32em;
+}
+.showcase-tag {
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  opacity: 0.85;
+  opacity: 0.7;
 }
-.showcase-thumb-1 { background-image: linear-gradient(135deg, #c9a87c 0%, #6b4a2a 50%, #2a1a10 100%); }
-.showcase-thumb-2 { background-image: linear-gradient(135deg, #8a9a8a, #2a3a3a); }
-.showcase-thumb-3 { background-image: linear-gradient(135deg, #b8a4c9, #3a2a4a); }
+.showcase-thumb-1 { background-image: url('images/respond-to-signal-404-showcase.png'); }
+.showcase-thumb-2 { background-image: url('images/interstellar-adventure.png'); }
+.showcase-thumb-3 { background-image: url('images/cook-human-on-time-showcase.jpg'); }
 
 /* ---------- All projects flat grid ---------- */
 .grid-all {
@@ -278,16 +285,16 @@ a:hover { opacity: 0.6; }
   letter-spacing: 0.04em;
   color: var(--muted);
 }
-.grid-thumb-1  { background-image: linear-gradient(135deg, #c9a87c, #2a1a10); }
-.grid-thumb-2  { background-image: linear-gradient(135deg, #8a9a8a, #2a3a3a); }
-.grid-thumb-3  { background-image: linear-gradient(135deg, #b8a4c9, #3a2a4a); }
-.grid-thumb-4  { background-image: linear-gradient(135deg, #d4a890, #6b3a2a); }
-.grid-thumb-5  { background-image: linear-gradient(135deg, #7a8aa8, #2a3a5a); }
-.grid-thumb-6  { background-image: linear-gradient(135deg, #c0a070, #4a3010); }
-.grid-thumb-7  { background-image: linear-gradient(135deg, #aab8a0, #3a4a30); }
-.grid-thumb-8  { background-image: linear-gradient(135deg, #d0a8a8, #5a2a3a); }
-.grid-thumb-9  { background-image: linear-gradient(135deg, #98a8c8, #1a2a4a); }
-.grid-thumb-10 { background-image: linear-gradient(135deg, #b89878, #3a200a); }
+.grid-thumb-1  { background-image: url('images/respond-to-signal-404.png'); }
+.grid-thumb-2  { background-image: url('images/interstellar-adventure.png'); }
+.grid-thumb-3  { background-image: url('images/cook-human-on-time.png'); }
+.grid-thumb-4  { background-image: url('images/invisible-egyptian-2023.jpg'); }
+.grid-thumb-5  { background-image: url('images/mother.png'); }
+.grid-thumb-6  { background-image: url('images/dr-smith.jpg'); }
+.grid-thumb-7  { background-image: url('images/pop-meow.png'); }
+.grid-thumb-8  { background-image: url('images/farting-symphony.png'); }
+.grid-thumb-9  { background-image: url('images/hypha.png'); }
+.grid-thumb-10 { background-image: url('images/grandmasday.png'); }
 
 @media (max-width: 1100px) {
   .grid-all { grid-template-columns: repeat(3, 1fr); }
