@@ -253,7 +253,13 @@ a:hover { opacity: 0.6; }
   opacity: 0.7;
 }
 .showcase-thumb-1 { background-image: url('images/respond-to-signal-404-showcase.png'); }
-.showcase-thumb-2 { background-image: url('images/interstellar-adventure.png'); }
+.showcase-thumb-2 {
+  background-image: url('images/interstellar-adventure-rocket.png');
+  background-size: auto 45%;
+  background-repeat: no-repeat;
+  background-position: center 10%;
+  background-color: #000;
+}
 .showcase-thumb-3 { background-image: url('images/cook-human-on-time-showcase.jpg'); }
 
 /* ---------- All projects flat grid ---------- */
@@ -540,3 +546,146 @@ body.intro-playing { overflow: hidden; }
   gap: 16px;
 }
 .footer-links { display: flex; gap: 20px; }
+
+/* ---------- Project detail page ---------- */
+.project {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(96px, 12vw, 140px) var(--pad) clamp(48px, 6vw, 80px);
+}
+.project-header {
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+.project-award {
+  display: inline-block;
+  color: #d96a1f;
+  font-size: clamp(15px, 1.3vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.project-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 76px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.project-tagline {
+  font-size: clamp(16px, 1.4vw, 19px);
+  color: var(--fg);
+  opacity: 0.78;
+  max-width: 56em;
+  margin-bottom: 18px;
+}
+.project-meta {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 10px;
+  align-items: baseline;
+}
+.project-meta .meta-sep { opacity: 0.4; }
+
+/* Play window — 16:9, max ~75vh */
+.play-section { margin-bottom: clamp(40px, 5vw, 72px); }
+.play-wrap {
+  width: 100%;
+  max-width: calc(75vh * 16 / 9);
+  margin: 0 auto;
+  background: #000;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+}
+.play-window {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  background: #000;
+}
+.play-notes {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* Repeatable content section */
+.project-section {
+  margin-top: clamp(36px, 4.5vw, 64px);
+  max-width: 760px;
+}
+.project-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 400;
+  margin-bottom: 14px;
+  letter-spacing: 0.01em;
+}
+.project-subtitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(14px, 1.1vw, 16px);
+  color: var(--muted);
+  margin: -6px 0 16px 0;
+  letter-spacing: 0.01em;
+}
+.project-prose p {
+  margin-bottom: 12px;
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+.project-prose p:last-child { margin-bottom: 0; }
+.project-bullets {
+  list-style: none;
+  padding: 0;
+}
+.project-bullets li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 8px;
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+.project-bullets li::before {
+  content: "·";
+  position: absolute;
+  left: 4px;
+  top: -2px;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--muted);
+}
+
+/* YouTube embed — full-width 16:9 */
+.video-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+}
+.video-embed {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.project-back {
+  margin-top: clamp(48px, 6vw, 80px);
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 600px) {
+  .play-wrap { max-width: 100%; }
+  .project-meta { gap: 4px 8px; font-size: 12px; }
+}

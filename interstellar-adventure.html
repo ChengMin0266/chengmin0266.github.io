@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interstellar Adventure — Cheng Min</title>
+  <meta name="description" content="Interstellar Adventure — a Sokoban RPG by Cheng Min." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="project-page">
+
+  <header class="nav">
+    <a href="index.html" class="nav-logo">← Cheng Min</a>
+    <nav class="nav-links">
+      <a href="index.html#work" data-en="Work" data-zh="作品">Work</a>
+      <a href="personal.html" data-en="Personal" data-zh="个人">Personal</a>
+      <a href="about.html" data-en="About" data-zh="关于">About</a>
+    </nav>
+    <div class="lang-toggle">
+      <button type="button" data-lang="en">EN</button>
+      <span aria-hidden="true">/</span>
+      <button type="button" data-lang="zh">中</button>
+    </div>
+  </header>
+
+  <main class="project">
+
+    <!-- [1] Title -->
+    <header class="project-header">
+      <p class="project-award" data-en="★ Selected · London Games Festival 2024" data-zh="★ 入选 · 伦敦游戏节 2024">★ Selected · London Games Festival 2024</p>
+      <h1 class="project-title" data-en="Interstellar Adventure" data-zh="星际冒险">Interstellar Adventure</h1>
+      <p class="project-tagline" data-en="RPG Sokoban game: collect crystals to repair your damaged spaceship and embark on a journey home." data-zh="RPG 推箱子：收集水晶，修复飞船，踏上归乡之旅。">RPG Sokoban game: collect crystals to repair your damaged spaceship and embark on a journey home.</p>
+      <p class="project-meta">
+        <span data-en="Role · Core Loop & Level Designer" data-zh="角色 · 核心循环 & 关卡设计师">Role · Core Loop & Level Designer</span>
+        <span class="meta-sep">·</span>
+        <span data-en="Unity · 2023" data-zh="Unity · 2023">Unity · 2023</span>
+        <span class="meta-sep">·</span>
+        <span data-en="UAL MAGD Final Major Project" data-zh="UAL MAGD 毕业项目">UAL MAGD Final Major Project</span>
+      </p>
+    </header>
+
+    <!-- [2] Play window — focal point. Replace iframe src by dropping the Unity WebGL build into play/interstellar-adventure/ -->
+    <section class="play-section">
+      <div class="play-wrap">
+        <iframe
+          class="play-window"
+          src="play/interstellar-adventure/index.html"
+          title="Interstellar Adventure — playable build"
+          allow="autoplay; fullscreen; gamepad"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <p class="play-notes">
+        <span data-en="Click the window to play · Press Esc to exit fullscreen" data-zh="点击窗口开始游玩 · Esc 退出全屏">Click the window to play · Press Esc to exit fullscreen</span>
+      </p>
+    </section>
+
+    <!-- [3] About — placeholder text, Cheng will provide -->
+    <section class="project-section">
+      <h2 class="project-h2" data-en="About" data-zh="关于本作">About</h2>
+      <div class="project-prose">
+        <p data-en="(About copy goes here — Cheng to provide.)" data-zh="（项目介绍文案待补 —— 程敏稍后提供。）">(About copy goes here — Cheng to provide.)</p>
+      </div>
+    </section>
+
+    <!-- [4] Gameplay walkthrough — YouTube embed -->
+    <section class="project-section">
+      <h2 class="project-h2" data-en="Gameplay Walkthrough" data-zh="游戏攻略">Gameplay Walkthrough</h2>
+      <p class="project-subtitle" data-en="Levels 8–23 · Zero skills used · 45 crystals collected" data-zh="8-23 关 · 全程零技能 · 集齐 45 颗水晶">Levels 8–23 · Zero skills used · 45 crystals collected</p>
+      <div class="video-wrap">
+        <iframe
+          class="video-embed"
+          src="https://www.youtube.com/embed/EsuY6nHM1_8?rel=0"
+          title="Interstellar Adventure — Gameplay Walkthrough"
+          loading="lazy"
+          frameborder="0"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- [5] Design highlights — placeholder, optional, Cheng to fill -->
+    <section class="project-section">
+      <h2 class="project-h2" data-en="Design Highlights" data-zh="设计亮点">Design Highlights</h2>
+      <ul class="project-bullets">
+        <li data-en="(Highlight 1 — to be filled.)" data-zh="（亮点 1 —— 待补。）">(Highlight 1 — to be filled.)</li>
+        <li data-en="(Highlight 2 — to be filled.)" data-zh="（亮点 2 —— 待补。）">(Highlight 2 — to be filled.)</li>
+        <li data-en="(Highlight 3 — to be filled.)" data-zh="（亮点 3 —— 待补。）">(Highlight 3 — to be filled.)</li>
+      </ul>
+    </section>
+
+    <!-- [6] Back link -->
+    <div class="project-back">
+      <a href="index.html#work" data-en="← Back to all projects" data-zh="← 返回作品列表">← Back to all projects</a>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p><span data-en="Cheng Min · London ·" data-zh="程敏 · 伦敦 ·">Cheng Min · London ·</span> <a href="mailto:mincheng0266@gmail.com">mincheng0266@gmail.com</a></p>
+      <p class="footer-links">
+        <a href="https://www.linkedin.com/in/cheng-min" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="personal.html" data-en="Personal" data-zh="个人">Personal</a>
+        <a href="about.html" data-en="About" data-zh="关于">About</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="lang.js"></script>
+</body>
+</html>
