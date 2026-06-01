@@ -23,7 +23,7 @@
   </div>
 
   <header class="nav">
-    <a href="index.html" class="nav-logo">Cheng Min</a>
+    <a href="index.html" class="nav-logo" data-en="Cheng Min" data-zh="闵珹">Cheng Min</a>
     <nav class="nav-links">
       <a href="#work" data-en="Work" data-zh="作品">Work</a>
       <a href="personal.html" data-en="Personal" data-zh="个人">Personal</a>
@@ -42,7 +42,7 @@
     </div>
     <div class="hero-text">
       <h1 data-en="Game Designer" data-zh="游戏设计师">Game Designer</h1>
-      <p data-en="Hi, I'm Cheng Min — a London-based game designer working across systems and visuals." data-zh="你好，我是程敏 —— 常驻伦敦的游戏设计师，专注系统与视觉。">Hi, I'm Cheng Min — a London-based game designer working across systems and visuals.</p>
+      <p data-en="Hi, I'm Cheng Min — a London-based game designer working across systems and visuals." data-zh="你好，我是闵珹 —— 常驻伦敦的游戏设计师，专注系统与视觉。">Hi, I'm Cheng Min — a London-based game designer working across systems and visuals.</p>
       <a href="#work" class="hero-cta" data-en="View work ↓" data-zh="查看作品 ↓">View work ↓</a>
     </div>
   </section>
@@ -136,12 +136,8 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <p><span data-en="Cheng Min · London ·" data-zh="程敏 · 伦敦 ·">Cheng Min · London ·</span> <a href="mailto:mincheng0266@gmail.com">mincheng0266@gmail.com</a></p>
-      <p class="footer-links">
-        <a href="https://www.linkedin.com/in/cheng-min" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="personal.html" data-en="Personal" data-zh="个人">Personal</a>
-        <a href="about.html" data-en="About" data-zh="关于">About</a>
-      </p>
+      <a class="footer-link" href="mailto:mincheng0266@gmail.com">mincheng0266@gmail.com</a>
+      <a class="footer-link" href="https://www.linkedin.com/in/cheng-min" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
   </footer>
   <script src="lang.js"></script>
@@ -234,6 +230,16 @@
       if (!intro) return;
 
       const STORAGE_KEY = 'intro-seen';
+
+      // If URL has a hash (e.g., #work coming from a project detail page's
+      // "← Cheng Min" logo), skip the intro entirely and let the browser
+      // jump directly to that section. Also mark intro as seen.
+      if (window.location.hash) {
+        intro.remove();
+        localStorage.setItem(STORAGE_KEY, '1');
+        return;
+      }
+
       const isReturning = localStorage.getItem(STORAGE_KEY) === '1';
       if (isReturning) intro.setAttribute('data-show-skip', 'true');
 
