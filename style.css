@@ -688,8 +688,8 @@ body.project-page .footer-inner {
 }
 .project-award {
   display: inline-block;
-  color: #eab308;
-  background: #4c1d95;
+  color: #4c1d95;
+  background: #f59e0b;
   font-size: clamp(14px, 1.2vw, 17px);
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -697,8 +697,7 @@ body.project-page .footer-inner {
   margin-bottom: 18px;
   padding: 7px 16px 6px;
   border-radius: 999px;
-  border: 1px solid rgba(234, 179, 8, 0.35);
-  box-shadow: 0 4px 14px rgba(76, 29, 149, 0.35);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.45);
 }
 .project-title {
   font-family: var(--font-display);
@@ -900,14 +899,6 @@ kbd {
   height: auto;
   border-radius: 4px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
-}
-.project-screenshot figcaption {
-  margin-top: 10px;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 14px;
-  color: var(--muted);
-  letter-spacing: 0.01em;
 }
 .project-bullets {
   list-style: none;
