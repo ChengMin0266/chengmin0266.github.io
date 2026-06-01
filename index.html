@@ -87,7 +87,11 @@
         <p data-en="Puzzle Horror · Unity" data-zh="解谜 · 恐怖 · Unity">Puzzle Horror · Unity</p>
       </a>
       <a href="interstellar-adventure.html" class="grid-item">
-        <div class="grid-thumb grid-thumb-2"></div>
+        <div class="grid-thumb grid-thumb-2">
+          <video class="grid-preview" muted loop playsinline preload="metadata">
+            <source src="videos/interstellar-adventure-preview.mp4" type="video/mp4">
+          </video>
+        </div>
         <h4 data-en="Interstellar Adventure" data-zh="星际冒险">Interstellar Adventure</h4>
         <p data-en="Puzzle · Sokoban · Unity" data-zh="解谜 · 推箱子 · Unity">Puzzle · Sokoban · Unity</p>
       </a>
@@ -304,6 +308,22 @@
       intro.addEventListener('click', (e) => {
         if (e.target.closest('.intro-skip')) return;
         triggerFall();
+      });
+    })();
+  </script>
+  <script>
+    (function initGridPreviews() {
+      document.querySelectorAll('.grid-item').forEach((item) => {
+        const video = item.querySelector('.grid-preview');
+        if (!video) return;
+        item.addEventListener('mouseenter', () => {
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        });
+        item.addEventListener('mouseleave', () => {
+          video.pause();
+          video.currentTime = 0;
+        });
       });
     })();
   </script>

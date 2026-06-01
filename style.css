@@ -265,12 +265,13 @@ a:hover { opacity: 0.6; }
 /* ---------- All projects flat grid ---------- */
 .grid-all {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: clamp(16px, 2vw, 28px) clamp(16px, 1.6vw, 24px);
 }
 .grid-item { display: block; }
 .grid-thumb {
-  aspect-ratio: 4 / 3;
+  position: relative;
+  aspect-ratio: 5 / 3;
   border-radius: 4px;
   margin-bottom: 12px;
   overflow: hidden;
@@ -278,7 +279,19 @@ a:hover { opacity: 0.6; }
   background-position: center;
   transition: transform 0.4s ease;
 }
+.grid-item:hover { opacity: 1; }  /* override global a:hover opacity 0.6 — keep video / text crisp */
 .grid-item:hover .grid-thumb { transform: scale(0.98); }
+.grid-preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.grid-item:hover .grid-preview { opacity: 1; }
 .grid-item h4 {
   font-family: var(--font-display);
   font-weight: 400;
@@ -291,6 +304,21 @@ a:hover { opacity: 0.6; }
   letter-spacing: 0.04em;
   color: var(--muted);
 }
+/* Contained (whole image visible, smaller) — only one cover needs this */
+.grid-thumb-8 {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #ffedb7;  /* Farting Symphony — fill sides with the cover's own bg yellow */
+}
+/* These covers use cover (fill tile) with adjusted position to crop part of the image */
+.grid-thumb-1 { background-position: center 75%; }  /* Respond to Signal 404 — crop top, keep character's head visible */
+.grid-thumb-3 {
+  background-size: auto 132%;  /* scale image height 132% of tile to force vertical overflow */
+  background-position: center top;  /* anchor top → bottom ~24% is cropped */
+}
+.grid-thumb-5 { background-position: center top; }    /* Mother — crop bottom */
+.grid-thumb-6 { background-position: center top; }    /* Dr. Smith — crop bottom */
+.grid-thumb-9 { background-position: center top; }    /* Hypha — crop bottom */
 .grid-thumb-1  { background-image: url('images/respond-to-signal-404.png'); }
 .grid-thumb-2  { background-image: url('images/interstellar-adventure.png'); }
 .grid-thumb-3  { background-image: url('images/cook-human-on-time.png'); }
@@ -566,7 +594,7 @@ body.project-page {
 }
 body.project-page .project,
 body.project-page .footer {
-  background: rgba(245, 243, 238, 0.78);
+  background: rgba(245, 243, 238, 0.68);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   position: relative;
