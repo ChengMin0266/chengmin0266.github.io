@@ -1053,6 +1053,28 @@ kbd {
   height: auto;
   mix-blend-mode: multiply;
 }
+/* Figures side by side filling the full row width. Each figure's flex-grow is set
+   (inline) to its image aspect ratio (w/h), so the images end up the SAME height
+   while their widths differ — and together with the gap they fill the row exactly.
+   Stacks on narrow screens. */
+.figure-row {
+  display: flex;
+  gap: clamp(12px, 2vw, 28px);
+  align-items: flex-start;
+}
+.figure-row .project-figure {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: none;
+}
+.figure-row .project-figure img {
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 600px) {
+  .figure-row { flex-wrap: wrap; }
+  .figure-row .project-figure { flex-basis: 100%; }
+}
 .project-screenshot {
   margin: 18px 0 36px;
   /* fill section width, which fills the card content area edge to edge */
