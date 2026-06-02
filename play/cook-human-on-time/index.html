@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cook Human On Time — Build in progress</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #1a0f07;
+      color: #f3e9dd;
+      font-family: "Times New Roman", Georgia, serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .stage {
+      text-align: center;
+      padding: 24px;
+    }
+    .pot {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 28px;
+    }
+    /* simmering heat pulse rings */
+    .pot span {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #f59e0b;
+      box-shadow: 0 0 18px rgba(245, 158, 11, 0.9);
+    }
+    .pot .ring {
+      width: 18px;
+      height: 18px;
+      background: transparent;
+      border: 1px solid rgba(245, 158, 11, 0.7);
+      box-shadow: none;
+      animation: pulse 2.4s ease-out infinite;
+    }
+    .pot .ring.r2 { animation-delay: 0.8s; }
+    .pot .ring.r3 { animation-delay: 1.6s; }
+    @keyframes pulse {
+      0%   { width: 18px; height: 18px; opacity: 0.9; }
+      100% { width: 120px; height: 120px; opacity: 0; }
+    }
+    .code {
+      font-size: 13px;
+      letter-spacing: 0.35em;
+      color: #f59e0b;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+    .title {
+      font-size: 22px;
+      margin: 0 0 6px;
+      letter-spacing: 0.04em;
+    }
+    .sub {
+      font-size: 14px;
+      color: #b39a82;
+      margin: 0;
+      font-style: italic;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .pot .ring { animation: none; opacity: 0.25; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="pot" aria-hidden="true">
+      <span class="ring"></span>
+      <span class="ring r2"></span>
+      <span class="ring r3"></span>
+      <span></span>
+    </div>
+    <p class="code">Cook Human On Time</p>
+    <h1 class="title">Build in progress</h1>
+    <p class="sub">The playable build will be dropped in here.</p>
+  </div>
+</body>
+</html>

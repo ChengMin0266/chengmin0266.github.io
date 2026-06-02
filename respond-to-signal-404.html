@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Respond to Signal 404 — Cheng Min</title>
+  <meta name="description" content="Respond to Signal 404 — a puzzle horror game by Cheng Min." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="project-page p-signal404">
+
+  <canvas class="rain-canvas" aria-hidden="true"></canvas>
+
+  <header class="nav">
+    <a href="index.html#work" class="nav-logo" data-en="← Cheng Min" data-zh="← 闵珹">← Cheng Min</a>
+    <nav class="nav-links">
+      <a href="index.html#work" data-en="Work" data-zh="作品">Work</a>
+      <a href="personal.html" data-en="Personal" data-zh="个人">Personal</a>
+      <a href="about.html" data-en="About" data-zh="关于">About</a>
+    </nav>
+    <div class="lang-toggle">
+      <button type="button" data-lang="en">EN</button>
+      <span aria-hidden="true">/</span>
+      <button type="button" data-lang="zh">中</button>
+    </div>
+  </header>
+
+  <main class="project">
+
+    <!-- [1] Title -->
+    <header class="project-header">
+      <h1 class="project-title" data-en="Respond to Signal 404" data-zh="来自404的信号">Respond to Signal 404</h1>
+      <p class="project-tagline" data-en="If you can hear it, it's already too late." data-zh="当你听见它的时候，已经太迟了。">If you can hear it, it's already too late.</p>
+      <p class="project-meta">
+        <span data-en="Role · Game &amp; Narrative Designer · Sound Design" data-zh="角色 · 游戏策划 &amp; 文案策划 · 音效设计">Role · Game &amp; Narrative Designer · Sound Design</span>
+        <span class="meta-sep">·</span>
+        <span data-en="Unity · 2026" data-zh="Unity · 2026">Unity · 2026</span>
+        <span class="meta-sep">·</span>
+        <span data-en="Puzzle · Horror" data-zh="解谜 · 恐怖">Puzzle · Horror</span>
+      </p>
+    </header>
+
+    <!-- [2] Play window — placeholder build. Replace by dropping the Unity WebGL build into play/respond-to-signal-404/ -->
+    <section class="play-section">
+      <div class="play-wrap">
+        <iframe
+          class="play-window"
+          src="play/respond-to-signal-404/index.html"
+          title="Respond to Signal 404 — playable build"
+          allow="autoplay; fullscreen; gamepad"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="play-controls">
+        <p class="play-controls-title" data-en="How to Play" data-zh="操作说明">How to Play</p>
+        <div class="play-controls-grid">
+          <div class="play-control">
+            <span class="action-name" data-en="Move" data-zh="移动方向">Move</span>
+            <span class="action-detail"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name action-name--stack">
+              <span data-en="Pick up" data-zh="拾取">Pick up</span>
+              <span data-en="Hide in / leave locker" data-zh="躲入 / 离开柜子">Hide in / leave locker</span>
+            </span>
+            <span class="action-detail"><kbd>E</kbd></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name" data-en="Open door" data-zh="开门">Open door</span>
+            <span class="action-detail"><kbd>F</kbd></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name" data-en="Cycle lens filter colour" data-zh="切换镜片滤镜颜色">Cycle lens filter colour</span>
+            <span class="action-detail">
+              <kbd>Q</kbd>
+              <em class="active-note" data-en="— after you find the glasses" data-zh="— 获得眼镜后">— after you find the glasses</em>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- [3] About -->
+    <section class="project-section">
+      <h2 class="project-h2" data-en="About" data-zh="关于本作">About</h2>
+      <div class="project-prose">
+        <p data-en="[About — paragraph 1 placeholder. What the game is, the premise, the platform/context it was built in.]" data-zh="[关于 — 第一段占位。这是什么游戏、核心设定、开发背景/平台。]">[About — paragraph 1 placeholder. What the game is, the premise, the platform/context it was built in.]</p>
+        <p data-en="[About — paragraph 2 placeholder. Core loop, the central mechanic or horror hook, structure of the experience.]" data-zh="[关于 — 第二段占位。核心循环、核心机制或恐怖钩子、体验结构。]">[About — paragraph 2 placeholder. Core loop, the central mechanic or horror hook, structure of the experience.]</p>
+        <p data-en="As game and narrative designer, I designed the game's environments and the placement of every prop, the gameplay flow and the order in which puzzles are solved, and I reviewed and partly wrote the worldview and storyline. I also produced all of the game's sound effects." data-zh="作为游戏策划与文案策划，我设计了整个游戏的场景与道具摆放、玩法流程与解谜顺序，并负责世界观与故事线的审核及部分撰写；此外，游戏的全部音效也由我独立完成。">As game and narrative designer, I designed the game's environments and the placement of every prop, the gameplay flow and the order in which puzzles are solved, and I reviewed and partly wrote the worldview and storyline. I also produced all of the game's sound effects.</p>
+      </div>
+    </section>
+
+    <!-- [4] Design highlights -->
+    <section class="project-section">
+      <h2 class="project-h2" data-en="Design Highlights" data-zh="设计亮点">Design Highlights</h2>
+      <!-- Optional figure (uncomment + add image when ready):
+      <figure class="project-figure">
+        <img src="images/respond-to-signal-404-design-rules.png" alt="Design rules" loading="lazy" />
+      </figure> -->
+      <ul class="project-bullets">
+        <li>
+          <strong data-en="[Highlight 1 — lead sentence placeholder]" data-zh="[亮点 1 — 粗体导语占位]">[Highlight 1 — lead sentence placeholder]</strong> — <span data-en="[Supporting detail placeholder — what the design choice is and why it works.]" data-zh="[正文占位 — 这个设计是什么、为什么有效。]">[Supporting detail placeholder — what the design choice is and why it works.]</span>
+        </li>
+        <li>
+          <strong data-en="[Highlight 2 — lead sentence placeholder]" data-zh="[亮点 2 — 粗体导语占位]">[Highlight 2 — lead sentence placeholder]</strong> — <span data-en="[Supporting detail placeholder.]" data-zh="[正文占位。]">[Supporting detail placeholder.]</span>
+        </li>
+        <li>
+          <strong data-en="[Highlight 3 — lead sentence placeholder]" data-zh="[亮点 3 — 粗体导语占位]">[Highlight 3 — lead sentence placeholder]</strong> — <span data-en="[Supporting detail placeholder.]" data-zh="[正文占位。]">[Supporting detail placeholder.]</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- [5] Level screenshots -->
+    <section class="project-section">
+      <h2 class="project-h2" data-en="Screenshots" data-zh="游戏截图">Screenshots</h2>
+      <div class="project-prose">
+        <p data-en="[Screenshots placeholder — drop images into images/ and replace this block.]" data-zh="[截图占位 — 把图片放进 images/ 后替换此处。]">[Screenshots placeholder — drop images into images/ and replace this block.]</p>
+      </div>
+      <!-- Uncomment per screenshot when ready:
+      <figure class="project-screenshot">
+        <img src="images/respond-to-signal-404-screenshot-1.png" alt="Screenshot 1" loading="lazy" />
+      </figure> -->
+    </section>
+
+    <!-- [6] Gameplay walkthrough -->
+    <section class="project-section">
+      <h2 class="project-h2" data-en="Gameplay Walkthrough" data-zh="游戏攻略">Gameplay Walkthrough</h2>
+      <p class="project-subtitle" data-en="[Walkthrough subtitle — TBD]" data-zh="[攻略副标题 — 待补]">[Walkthrough subtitle — TBD]</p>
+      <!-- Uncomment + set the YouTube video id when ready:
+      <div class="video-wrap">
+        <iframe
+          class="video-embed"
+          src="https://www.youtube.com/embed/VIDEO_ID?rel=0"
+          title="Respond to Signal 404 — Gameplay Walkthrough"
+          loading="lazy"
+          frameborder="0"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div> -->
+    </section>
+
+    <!-- Back to top — scrolls within the current page only -->
+    <div class="project-back">
+      <a href="#" data-en="↑ Back to top" data-zh="↑ 回到顶部">↑ Back to top</a>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <a class="footer-link" href="mailto:mincheng0266@gmail.com">mincheng0266@gmail.com</a>
+      <a class="footer-link" href="https://www.linkedin.com/in/cheng-min" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </footer>
+
+  <!-- Rainfall behind the content card. Drops fall vertically with a slight left lean. -->
+  <script>
+  (function () {
+    var canvas = document.querySelector('.rain-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var W, H, dpr, drops;
+    var slant = 0.16; // horizontal lean per unit of fall
+
+    function rand(a, b) { return a + Math.random() * (b - a); }
+
+    function makeDrops() {
+      var count = Math.round(W * H / 6500); // density scales with viewport
+      drops = [];
+      for (var i = 0; i < count; i++) {
+        drops.push({
+          x: rand(0, W + 80),
+          y: rand(0, H),
+          len: rand(22, 44),
+          speed: rand(450, 950), // px per second
+          alpha: rand(0.30, 0.60)
+        });
+      }
+    }
+
+    function drawDrop(d) {
+      ctx.strokeStyle = 'rgba(210, 226, 238, ' + d.alpha + ')';
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x - d.len * slant, d.y + d.len);
+      ctx.stroke();
+    }
+
+    function resize() {
+      dpr = window.devicePixelRatio || 1;
+      W = window.innerWidth;
+      H = window.innerHeight;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.lineWidth = 1.2;
+      ctx.lineCap = 'round';
+      makeDrops();
+      if (reduce) { ctx.clearRect(0, 0, W, H); drops.forEach(drawDrop); }
+    }
+
+    var last = 0;
+    function frame(t) {
+      var dt = last ? Math.min((t - last) / 1000, 0.05) : 0;
+      last = t;
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < drops.length; i++) {
+        var d = drops[i];
+        drawDrop(d);
+        d.y += d.speed * dt;
+        d.x -= d.speed * dt * slant;
+        if (d.y - d.len > H) { d.y = -d.len; d.x = rand(0, W + 80); }
+      }
+      requestAnimationFrame(frame);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    if (!reduce) requestAnimationFrame(frame);
+  })();
+  </script>
+
+  <script src="lang.js"></script>
+</body>
+</html>

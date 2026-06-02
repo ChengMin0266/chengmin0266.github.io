@@ -50,12 +50,13 @@
   <section id="work" class="work">
     <h2 class="section-title" data-en="Selected Games" data-zh="精选游戏作品">Selected Games</h2>
 
+    <div class="showcase-wrap">
     <div class="showcase" data-marquee>
       <div class="showcase-track">
-        <a href="#" class="showcase-card">
+        <a href="respond-to-signal-404.html" class="showcase-card">
           <div class="showcase-thumb showcase-thumb-1"></div>
           <div class="showcase-overlay">
-            <h3 data-en="Respond to Signal 404" data-zh="信号 404">Respond to Signal 404</h3>
+            <h3 data-en="Respond to Signal 404" data-zh="来自404的信号">Respond to Signal 404</h3>
             <p class="showcase-desc" data-en="If you can hear it, it's already too late." data-zh="当你听见它的时候，已经太迟了。">If you can hear it, it's already too late.</p>
             <p class="showcase-tag" data-en="Puzzle Horror · Unity" data-zh="解谜 · 恐怖 · Unity">Puzzle Horror · Unity</p>
           </div>
@@ -68,7 +69,7 @@
             <p class="showcase-tag" data-en="Puzzle / Sokoban · Unity" data-zh="解谜 · 推箱子 · Unity">Puzzle / Sokoban · Unity</p>
           </div>
         </a>
-        <a href="#" class="showcase-card">
+        <a href="cook-human-on-time.html" class="showcase-card">
           <div class="showcase-thumb showcase-thumb-3"></div>
           <div class="showcase-overlay">
             <h3 data-en="Cook Human On Time" data-zh="人生调理">Cook Human On Time</h3>
@@ -78,12 +79,19 @@
         </a>
       </div>
     </div>
+      <button type="button" class="showcase-nav showcase-prev" aria-label="Previous">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18"></polyline></svg>
+      </button>
+      <button type="button" class="showcase-nav showcase-next" aria-label="Next">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>
+      </button>
+    </div>
 
     <h3 class="section-subtitle" data-en="All Projects" data-zh="全部项目">All Projects</h3>
     <div class="grid-all">
-      <a href="#" class="grid-item">
+      <a href="respond-to-signal-404.html" class="grid-item">
         <div class="grid-thumb grid-thumb-1"></div>
-        <h4 data-en="Respond to Signal 404" data-zh="信号 404">Respond to Signal 404</h4>
+        <h4 data-en="Respond to Signal 404" data-zh="来自404的信号">Respond to Signal 404</h4>
         <p data-en="Puzzle Horror · Unity" data-zh="解谜 · 恐怖 · Unity">Puzzle Horror · Unity</p>
       </a>
       <a href="interstellar-adventure.html" class="grid-item">
@@ -95,7 +103,7 @@
         <h4 data-en="Interstellar Adventure" data-zh="星际冒险">Interstellar Adventure</h4>
         <p data-en="Puzzle · Sokoban · Unity" data-zh="解谜 · 推箱子 · Unity">Puzzle · Sokoban · Unity</p>
       </a>
-      <a href="#" class="grid-item">
+      <a href="cook-human-on-time.html" class="grid-item">
         <div class="grid-thumb grid-thumb-3"></div>
         <h4 data-en="Cook Human On Time" data-zh="人生调理">Cook Human On Time</h4>
         <p data-en="Simulation · Unity" data-zh="模拟 · Unity">Simulation · Unity</p>
@@ -169,12 +177,14 @@
       let dragStartX = 0;
       let dragStartPos = 0;
       let halfWidth = 0;
+      let isAnimating = false;
+      let animId = 0;
 
       function measure() { halfWidth = track.scrollWidth / 2; }
       measure();
       window.addEventListener('resize', measure);
 
-      function paused() { return hoverPaused || offscreenPaused || isDragging; }
+      function paused() { return hoverPaused || offscreenPaused || isDragging || isAnimating; }
 
       function step() {
         if (!paused() && halfWidth > 0) {
@@ -189,6 +199,7 @@
       showcase.addEventListener('mouseleave', () => { hoverPaused = false; });
 
       showcase.addEventListener('pointerdown', (e) => {
+        if (e.target.closest('.showcase-nav')) return; // let arrow buttons handle their own clicks
         isDragging = true;
         didDrag = false;
         dragStartX = e.clientX;
@@ -215,8 +226,47 @@
 
       // Swallow the click that follows a drag so links don't fire mid-scrub
       showcase.addEventListener('click', (e) => {
-        if (didDrag) { e.preventDefault(); e.stopPropagation(); }
+        if (didDrag) { e.preventDefault(); e.stopPropagation(); return; }
+        // setPointerCapture retargets the click to this container, so a card's
+        // <a> never navigates on a clean click. Resolve the card under the
+        // cursor and follow its link manually.
+        const card = document.elementFromPoint(e.clientX, e.clientY)?.closest('.showcase-card');
+        const href = card && card.getAttribute('href');
+        if (href && href !== '#') window.location.href = href;
       }, true);
+
+      // Manual arrow nav: smoothly nudge the track by one card on top of the auto-scroll
+      function cardStep() {
+        const c = track.children;
+        if (c.length >= 2) return Math.abs(c[1].offsetLeft - c[0].offsetLeft) || c[0].offsetWidth;
+        return c.length ? c[0].offsetWidth : 0;
+      }
+      function nudge(dir) {
+        // dir = +1 -> previous (shift right), -1 -> next (shift left)
+        const start = position;
+        const target = start + dir * cardStep();
+        const startT = performance.now();
+        const dur = 450;
+        const myId = ++animId;
+        isAnimating = true;
+        function anim(now) {
+          if (myId !== animId) return;
+          const t = Math.min(1, (now - startT) / dur);
+          const e = 1 - Math.pow(1 - t, 3); // easeOutCubic
+          let p = start + (target - start) * e;
+          while (p <= -halfWidth) p += halfWidth;
+          while (p > 0) p -= halfWidth;
+          position = p;
+          track.style.transform = 'translateX(' + position + 'px)';
+          if (t < 1) requestAnimationFrame(anim);
+          else if (myId === animId) isAnimating = false;
+        }
+        requestAnimationFrame(anim);
+      }
+      const prevBtn = document.querySelector('.showcase-prev');
+      const nextBtn = document.querySelector('.showcase-next');
+      if (prevBtn) prevBtn.addEventListener('click', () => nudge(1));
+      if (nextBtn) nextBtn.addEventListener('click', () => nudge(-1));
 
       if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver((entries) => {
