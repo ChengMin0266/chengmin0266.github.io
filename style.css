@@ -633,10 +633,17 @@ body.project-page.p-interstellar {
     url('images/interstellar-adventure-bg.png') center / cover no-repeat fixed,
     #0a1230;
 }
-/* Respond to Signal 404 — foggy school-gate horror bg (no star-field). */
+/* Respond to Signal 404 — foggy school-gate horror bg with a cursed blood-red sky shroud. */
 body.project-page.p-signal404 {
   background:
-    linear-gradient(rgba(5, 5, 10, 0.42), rgba(5, 5, 10, 0.42)),
+    /* dark, desaturated blood-red sky — near-black at the top, fading downward; viewport-fixed */
+    linear-gradient(to bottom,
+      rgba(48, 12, 12, 0.82) 0%,
+      rgba(40, 12, 13, 0.64) 30%,
+      rgba(28, 10, 12, 0.40) 60%,
+      rgba(8, 5, 8, 0.16) 100%) center / cover fixed,
+    /* base dark veil for mood + card contrast */
+    linear-gradient(rgba(5, 5, 10, 0.40), rgba(5, 5, 10, 0.40)) center / cover fixed,
     url('images/respond-to-signal-404-bg.png') center / cover no-repeat fixed,
     #0a0a0f;
 }
@@ -821,6 +828,10 @@ body.project-page .footer-inner {
 }
 /* Respond to Signal 404 — deep blood-red title */
 body.p-signal404 .project-title { color: #6e1010; }
+/* Section headings — fresher, more saturated blood red than the title, but not glaring */
+body.p-signal404 .project-h2 { color: #b01a1a; }
+/* Cook Human On Time — vivid orange section headings (brighter than the brown title) */
+body.p-cook .project-h2 { color: #ea580c; }
 /* Cook Human On Time — orange-brown title */
 body.p-cook .project-title { color: #b45309; }
 
@@ -939,6 +950,7 @@ body.p-signal404 .play-controls-grid {
 body.p-signal404 .play-control { display: contents; }
 body.p-signal404 .action-name { min-width: 0; }
 body.p-signal404 .action-name--stack > span { display: block; }
+body.p-signal404 .action-detail--mid { align-self: center; } /* center key against the 2-line label */
 kbd {
   display: inline-block;
   min-width: 24px;
@@ -984,6 +996,21 @@ kbd {
   line-height: 1.7;
 }
 .project-prose p:last-child { margin-bottom: 0; }
+/* Screenshots — two per row, smaller than full-width figures */
+.project-shots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.project-shots img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+@media (max-width: 600px) {
+  .project-shots { grid-template-columns: 1fr; }
+}
 .project-download-wrap {
   margin-top: 18px !important;
 }
