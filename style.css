@@ -298,6 +298,7 @@ a:hover { opacity: 0.6; }
   background-color: #000;
 }
 .showcase-thumb-3 { background-image: url('images/cook-human-on-time-showcase.jpg'); }
+.showcase-thumb-4 { background-image: url('images/tarduck-showcase.png'); }
 
 /* ---------- All projects flat grid ---------- */
 .grid-all {
@@ -342,30 +343,31 @@ a:hover { opacity: 0.6; }
   color: var(--muted);
 }
 /* Contained (whole image visible, smaller) — only one cover needs this */
-.grid-thumb-8 {
+.grid-thumb-9 {
   background-size: contain;
   background-repeat: no-repeat;
   background-color: #ffedb7;  /* Farting Symphony — fill sides with the cover's own bg yellow */
 }
 /* These covers use cover (fill tile) with adjusted position to crop part of the image */
-.grid-thumb-1 { background-position: center 75%; }  /* Respond to Signal 404 — crop top, keep character's head visible */
-.grid-thumb-3 {
+.grid-thumb-3 { background-position: center 75%; }  /* Respond to Signal 404 — crop top, keep character's head visible */
+.grid-thumb-4 {
   background-size: auto 132%;  /* scale image height 132% of tile to force vertical overflow */
   background-position: center top;  /* anchor top → bottom ~24% is cropped */
 }
-.grid-thumb-5 { background-position: center top; }    /* Mother — crop bottom */
-.grid-thumb-6 { background-position: center top; }    /* Dr. Smith — crop bottom */
-.grid-thumb-9 { background-position: center top; }    /* Hypha — crop bottom */
-.grid-thumb-1  { background-image: url('images/respond-to-signal-404.png'); }
-.grid-thumb-2  { background-image: url('images/interstellar-adventure.png'); }
-.grid-thumb-3  { background-image: url('images/cook-human-on-time.png'); }
-.grid-thumb-4  { background-image: url('images/invisible-egyptian-2023.jpg'); }
-.grid-thumb-5  { background-image: url('images/mother.png'); }
-.grid-thumb-6  { background-image: url('images/dr-smith.jpg'); }
-.grid-thumb-7  { background-image: url('images/pop-meow.png'); }
-.grid-thumb-8  { background-image: url('images/farting-symphony.png'); }
-.grid-thumb-9  { background-image: url('images/hypha.png'); }
-.grid-thumb-10 { background-image: url('images/grandmasday.png'); }
+.grid-thumb-6 { background-position: center top; }    /* Mother — crop bottom */
+.grid-thumb-7 { background-position: center top; }    /* Dr. Smith — crop bottom */
+.grid-thumb-10 { background-position: center top; }   /* Hypha — crop bottom */
+.grid-thumb-1  { background-image: url('images/interstellar-adventure.png'); }
+.grid-thumb-2  { background-image: url('images/tarduck.png'); }
+.grid-thumb-3  { background-image: url('images/respond-to-signal-404.png'); }
+.grid-thumb-4  { background-image: url('images/cook-human-on-time.png'); }
+.grid-thumb-5  { background-image: url('images/invisible-egyptian-2023.jpg'); }
+.grid-thumb-6  { background-image: url('images/mother.png'); }
+.grid-thumb-7  { background-image: url('images/dr-smith.jpg'); }
+.grid-thumb-8  { background-image: url('images/pop-meow.png'); }
+.grid-thumb-9  { background-image: url('images/farting-symphony.png'); }
+.grid-thumb-10 { background-image: url('images/hypha.png'); }
+.grid-thumb-11 { background-image: url('images/grandmasday.png'); }
 
 @media (max-width: 1100px) {
   .grid-all { grid-template-columns: repeat(3, 1fr); }
@@ -654,6 +656,15 @@ body.project-page.p-cook {
     url('images/cook-human-on-time-bg.png') center / cover no-repeat fixed,
     #1a0f07;
 }
+/* Tarduck — dark camo military texture. An olive wash blended with `overlay` lifts the
+   midtones and boosts the green saturation without washing it out to grey. */
+body.project-page.p-tarduck {
+  background:
+    linear-gradient(rgba(150, 165, 75, 0.42), rgba(150, 165, 75, 0.42)),
+    url('images/tarduck-bg.png') center / cover no-repeat fixed,
+    #2a2e1e;
+  background-blend-mode: overlay, normal, normal;
+}
 body.project-page .project,
 body.project-page .footer {
   background: rgba(245, 243, 238, 0.68);
@@ -668,6 +679,9 @@ body.project-page.p-signal404 .footer { background: rgba(245, 243, 238, 0.8); }
 /* Cook Human On Time — more opaque cream card over the warm bg */
 body.project-page.p-cook .project,
 body.project-page.p-cook .footer { background: rgba(245, 243, 238, 0.8); }
+/* Tarduck — more opaque cream card over the busy dark camo bg */
+body.project-page.p-tarduck .project,
+body.project-page.p-tarduck .footer { background: rgba(245, 243, 238, 0.82); }
 
 /* Twinkling star field — fixed to viewport, sits between bg image and content card */
 .star-field {
@@ -834,6 +848,8 @@ body.p-signal404 .project-h2 { color: #b01a1a; }
 body.p-cook .project-h2 { color: #ea580c; }
 /* Cook Human On Time — orange-brown title */
 body.p-cook .project-title { color: #b45309; }
+/* Tarduck — brighter khaki-gold (土黄) title; luminous but still earthy/military */
+body.p-tarduck .project-title { color: #c9a227; }
 
 /* Respond to Signal 404 — rainfall canvas sits behind the content card (z-index 0 < card's
    z-index 1), so the rain reads mainly in the side gutters. Drawn by the inline script in the page. */

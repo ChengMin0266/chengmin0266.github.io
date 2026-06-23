@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarduck — Cheng Min</title>
+  <meta name="description" content="Tarduck — a new project by Cheng Min." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Tarduck play window — the embedded game is tuned for a fixed 1080p desktop
+       (HUD uses fixed-px sizes), so we render the iframe at a fixed 1920×1080
+       "design" size and scale the whole frame down to fit. The game never reflows;
+       any leftover space is letterboxed black. JS sets the scale on load + resize. */
+    .play-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #000;
+    }
+    .play-stage .game-frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1920px;
+      height: 1080px;
+      border: 0;
+      transform-origin: top left;
+      transform: scale(0.5); /* placeholder; real value set by JS before paint */
+    }
+    .play-stage:fullscreen,
+    .play-stage:-webkit-full-screen {
+      width: 100vw;
+      height: 100vh;
+      aspect-ratio: auto;
+    }
+    .play-fs-btn {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      z-index: 3;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border: none;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      cursor: pointer;
+      opacity: 0.75;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      transition: background 0.2s ease, opacity 0.2s ease;
+    }
+    .play-fs-btn:hover { background: rgba(0, 0, 0, 0.82); opacity: 1; }
+    .play-fs-btn svg { width: 20px; height: 20px; display: block; }
+  </style>
+</head>
+<body class="project-page p-tarduck">
+
+  <header class="nav">
+    <a href="index.html#work" class="nav-logo" data-en="← Cheng Min" data-zh="← 闵珹">← Cheng Min</a>
+    <nav class="nav-links">
+      <a href="index.html#work" data-en="Work" data-zh="作品">Work</a>
+      <a href="personal.html" data-en="Personal" data-zh="个人">Personal</a>
+      <a href="about.html" data-en="About" data-zh="关于">About</a>
+    </nav>
+    <div class="lang-toggle">
+      <button type="button" data-lang="en">EN</button>
+      <span aria-hidden="true">/</span>
+      <button type="button" data-lang="zh">中</button>
+    </div>
+  </header>
+
+  <main class="project">
+
+    <!-- [1] Title — TODO: fill in award line, tagline, role, engine, year -->
+    <header class="project-header">
+      <h1 class="project-title" data-en="Tarduck" data-zh="Tarduck">Tarduck</h1>
+      <p class="project-tagline" data-en="Quack. Loot. Extract. A top-down extraction shooter about looting hard and getting out alive." data-zh="嘎。搜刮。撤离。一款拼死搜刮、活着撤离的顶视角撤离射击。">Quack. Loot. Extract. A top-down extraction shooter about looting hard and getting out alive.</p>
+      <p class="project-meta">
+        <span data-en="Role · Game Designer" data-zh="角色 · 游戏设计师">Role · Game Designer</span>
+        <span class="meta-sep">·</span>
+        <span data-en="Web · Three.js · 2026" data-zh="Web · Three.js · 2026">Web · Three.js · 2026</span>
+        <span class="meta-sep">·</span>
+        <span data-en="Top-Down Shooter" data-zh="顶视角射击">Top-Down Shooter</span>
+      </p>
+    </header>
+
+    <!-- [2] Play window — live build hosted at suzyeth.github.io/escape-from-duckkov/.
+         Rendered at a fixed 1920×1080 and scaled to fit (see <style> + script below)
+         so the game's fixed-px HUD stays exactly as tuned.
+         (Local play/tarduck/ placeholder kept as a fallback; no longer referenced.) -->
+    <section class="play-section">
+      <div class="play-wrap">
+        <div class="play-stage" id="tarduck-stage">
+          <iframe
+            class="game-frame"
+            id="tarduck-frame"
+            src="https://suzyeth.github.io/escape-from-duckkov/"
+            title="Tarduck — playable build"
+            allow="autoplay; fullscreen; gamepad"
+            allowfullscreen
+            scrolling="no"
+          ></iframe>
+          <button type="button" class="play-fs-btn" id="tarduck-fs" aria-label="Fullscreen" title="Fullscreen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="play-controls">
+        <p class="play-controls-title" data-en="How to Play" data-zh="操作说明">How to Play</p>
+        <div class="play-controls-grid">
+          <div class="play-control">
+            <span class="action-name" data-en="Move" data-zh="移动">Move</span>
+            <span class="action-detail"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name" data-en="Aim" data-zh="瞄准">Aim</span>
+            <span class="action-detail"><kbd>Mouse</kbd><em class="active-note" data-en="— character faces the cursor" data-zh="— 角色朝向光标">— character faces the cursor</em></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name" data-en="Fire" data-zh="射击">Fire</span>
+            <span class="action-detail"><kbd>LMB</kbd></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name" data-en="Aim assist" data-zh="瞄准辅助">Aim assist</span>
+            <span class="action-detail"><kbd>RMB</kbd><em class="active-note" data-en="— tightens spread" data-zh="— 收紧散布">— tightens spread</em></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name" data-en="Sprint" data-zh="冲刺">Sprint</span>
+            <span class="action-detail"><kbd>Shift</kbd><em class="active-note" data-en="— consumes stamina" data-zh="— 消耗体力">— consumes stamina</em></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name" data-en="Crouch" data-zh="蹲下">Crouch</span>
+            <span class="action-detail"><kbd>Ctrl</kbd><em class="active-note" data-en="— slower, faster stamina regen" data-zh="— 减速，体力回复更快">— slower, faster stamina regen</em></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name" data-en="Switch weapon" data-zh="切换武器">Switch weapon</span>
+            <span class="action-detail"><kbd>1</kbd>–<kbd>5</kbd></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name" data-en="Reload" data-zh="换弹">Reload</span>
+            <span class="action-detail"><kbd>R</kbd><em class="active-note" data-en="— auto on empty mag" data-zh="— 空仓自动换弹">— auto on empty mag</em></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name" data-en="Heal" data-zh="治疗">Heal</span>
+            <span class="action-detail"><kbd>H</kbd><em class="active-note" data-en="— uses best healing item" data-zh="— 使用最佳治疗物">— uses best healing item</em></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name" data-en="Loot / Extract" data-zh="拾取 / 撤离">Loot / Extract</span>
+            <span class="action-detail"><kbd>E</kbd><em class="active-note" data-en="— open corpse/crate · hold to extract" data-zh="— 开尸体/箱子 · 长按撤离">— open corpse/crate · hold to extract</em></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name" data-en="Open / close door" data-zh="开 / 关门">Open / close door</span>
+            <span class="action-detail"><kbd>F</kbd></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name" data-en="Inventory" data-zh="背包">Inventory</span>
+            <span class="action-detail"><kbd>Tab</kbd></span>
+          </div>
+          <div class="play-control">
+            <span class="action-name" data-en="Pause" data-zh="暂停">Pause</span>
+            <span class="action-detail"><kbd>Esc</kbd></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- [3] About — TODO: replace placeholder prose -->
+    <section class="project-section">
+      <h2 class="project-h2" data-en="About" data-zh="关于本作">About</h2>
+      <div class="project-prose">
+        <p data-en="Tarduck is a top-down extraction shooter I designed and rapidly prototyped — a fully playable proof-of-concept for validating an entire extraction-shooter loop end to end. Instead of spending weeks on a traditional vertical slice, I drove an AI-assisted 'vibe-coding' workflow to get from design doc to a running, systemic build in days, then iterated on game feel directly in the browser." data-zh="《Tarduck》是我设计、并快速做成可玩原型的一款顶视角撤离射击 —— 一个完整可玩的概念验证，用来端到端验证一整套撤离射击的核心循环。我没有按传统方式花数周打磨垂直切片，而是用 AI 驱动的 vibe-coding 工作流，几天内就把设计文档变成可运行的系统化 build，再直接在浏览器里迭代手感。">Tarduck is a top-down extraction shooter I designed and rapidly prototyped — a fully playable proof-of-concept for validating an entire extraction-shooter loop end to end. Instead of spending weeks on a traditional vertical slice, I drove an AI-assisted 'vibe-coding' workflow to get from design doc to a running, systemic build in days, then iterated on game feel directly in the browser.</p>
+        <p data-en="Beneath the surface sits a deliberately deep systems layer: locational damage with limb fractures (a broken leg kills your sprint, a broken arm widens your spread), encumbrance that pits loot greed against mobility, a talent tree with build-defining combos, a grid inventory and stash economy, and the signature risk/reward of 'one more crate, or extract now?'. The prototype existed to pressure-test exactly that tension until the core loop bit." data-zh="在朴素的外表之下，是一套刻意做深的系统：部位伤害与肢体骨折（断腿无法冲刺、断臂散布扩大）、在贪图战利品与机动性之间博弈的负重系统、带成型 combo 的天赋树、网格背包与仓库经济，以及最核心的风险/收益抉择——再开一个箱子，还是现在就撤？原型的意义，正是反复压测这种张力，直到核心循环真正成立。">Beneath the surface sits a deliberately deep systems layer: locational damage with limb fractures (a broken leg kills your sprint, a broken arm widens your spread), encumbrance that pits loot greed against mobility, a talent tree with build-defining combos, a grid inventory and stash economy, and the signature risk/reward of 'one more crate, or extract now?'. The prototype existed to pressure-test exactly that tension until the core loop bit.</p>
+        <p data-en="The point was never finished art — it was to prove the design holds up as a game. Owning the full loop end to end (combat, loot, damage model, extraction) through an AI pipeline let me validate the concept with real play in a fraction of the usual time, and fail fast where it needed to. Co-developed with Ziwei Su." data-zh="目标从来不是成品美术，而是证明这套设计作为游戏能不能立得住。借助 AI 管线端到端把控完整循环（战斗、搜刮、伤害模型、撤离），让我用远少于常规的时间、以真实游玩验证概念——该砍的地方也能快速试错。与 Ziwei Su 合作开发。">The point was never finished art — it was to prove the design holds up as a game. Owning the full loop end to end (combat, loot, damage model, extraction) through an AI pipeline let me validate the concept with real play in a fraction of the usual time, and fail fast where it needed to. Co-developed with Ziwei Su.</p>
+      </div>
+    </section>
+
+    <!-- [4] Roadmap — frames the placeholder visuals as a deliberate systems-first stage
+         and sets up the planned art/production pass. -->
+    <section class="project-section">
+      <h2 class="project-h2" data-en="Roadmap" data-zh="后续规划">Roadmap</h2>
+      <div class="project-prose">
+        <p data-en="The current models were built the fastest way possible to reach a playable build — the priority was getting the systems in front of real play, not the art. With the core loop proven, the next phase is production: a full art pass swapping the prototype assets for bespoke models and a proper Tarduck identity (yes, an actual duck), animation and sound polish, an expanded weapon and map roster, and balance tuning driven by real playtest data." data-zh="目前的模型是用最快的方式搭出来的，先把可玩 build 跑起来 —— 重点是让系统接受真实游玩的检验，而不是美术。核心循环既已验证，下一阶段就是生产化：一次完整的美术替换，用定制模型和真正的 Tarduck 形象（对，会有一只货真价实的鸭子）替换原型资源，补齐动画与音效打磨，扩充武器与地图阵容，并依据真实实测数据做平衡调整。">The current models were built the fastest way possible to reach a playable build — the priority was getting the systems in front of real play, not the art. With the core loop proven, the next phase is production: a full art pass swapping the prototype assets for bespoke models and a proper Tarduck identity (yes, an actual duck), animation and sound polish, an expanded weapon and map roster, and balance tuning driven by real playtest data.</p>
+      </div>
+    </section>
+
+    <!-- [5] Back to top — scrolls within the current page only -->
+    <div class="project-back">
+      <a href="#" data-en="↑ Back to top" data-zh="↑ 回到顶部">↑ Back to top</a>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <a class="footer-link" href="mailto:mincheng0266@gmail.com">mincheng0266@gmail.com</a>
+      <a class="footer-link" href="https://www.linkedin.com/in/cheng-min" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </footer>
+
+  <script src="lang.js"></script>
+  <script>
+    (function initTarduckPlay() {
+      const stage = document.getElementById('tarduck-stage');
+      const frame = document.getElementById('tarduck-frame');
+      const fsBtn = document.getElementById('tarduck-fs');
+      if (!stage || !frame) return;
+
+      const DESIGN_W = 1920, DESIGN_H = 1080;
+
+      // Scale the fixed 1920×1080 frame to fit the stage, preserving aspect.
+      // Stage is 16:9 so width and height scale equally; any rounding gap stays black.
+      function fit() {
+        const w = stage.clientWidth;
+        const h = stage.clientHeight;
+        if (!w || !h) return;
+        const scale = Math.min(w / DESIGN_W, h / DESIGN_H);
+        frame.style.transform = 'scale(' + scale + ')';
+        // Center → letterbox if the stage ever isn't exactly 16:9 (e.g. fullscreen on an ultrawide).
+        frame.style.left = Math.round((w - DESIGN_W * scale) / 2) + 'px';
+        frame.style.top = Math.round((h - DESIGN_H * scale) / 2) + 'px';
+      }
+
+      fit();
+      window.addEventListener('resize', fit);
+
+      // Fullscreen toggles the stage wrapper (frame + button go fullscreen together).
+      if (fsBtn) {
+        fsBtn.addEventListener('click', function () {
+          const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+          if (!fsEl) {
+            (stage.requestFullscreen || stage.webkitRequestFullscreen).call(stage);
+          } else {
+            (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+          }
+        });
+        document.addEventListener('fullscreenchange', function () { requestAnimationFrame(fit); });
+        document.addEventListener('webkitfullscreenchange', function () { requestAnimationFrame(fit); });
+      }
+    })();
+  </script>
+</body>
+</html>

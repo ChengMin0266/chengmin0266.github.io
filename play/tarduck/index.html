@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarduck — Build in progress</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0; height: 100%;
+      background: radial-gradient(circle at 50% 38%, #1c4a47 0%, #0a1416 70%);
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow: hidden;
+    }
+    .stage {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+    .orb {
+      width: clamp(90px, 16vh, 150px);
+      height: clamp(90px, 16vh, 150px);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #f4d271 0%, #e8b84b 45%, #b07a23 100%);
+      box-shadow: 0 0 40px rgba(232, 184, 75, 0.45);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+      50%      { transform: translateY(-6px) scale(1.05); opacity: 0.92; }
+    }
+    .label {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+    }
+    .sublabel {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3);
+      margin-top: 4px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="orb" aria-hidden="true"></div>
+    <div>
+      <div class="label">Build in progress</div>
+      <div class="sublabel">WebGL playable coming soon</div>
+    </div>
+  </div>
+</body>
+</html>
