@@ -1,90 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Respond to Signal 404 — Build in progress</title>
+  <title>Respond to Signal 404</title>
   <style>
-    html, body {
-      margin: 0;
-      height: 100%;
-      background: #07070b;
-      color: #e6e6ea;
-      font-family: "Times New Roman", Georgia, serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+    html, body { margin: 0; padding: 0; height: 100%; background: #000; overflow: hidden; }
+    #stage {
+      position: fixed; inset: 0;
+      display: flex; align-items: center; justify-content: center;
     }
-    .stage {
-      text-align: center;
-      padding: 24px;
+    /* Preserve the build's native 3:2 (960×600); pillarbox black on a wider frame. */
+    #unity-canvas {
+      aspect-ratio: 3 / 2;
+      max-width: 100%;
+      max-height: 100%;
+      background: #000;
+      display: block;
     }
-    .signal {
-      position: relative;
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 28px;
-    }
-    /* radar / signal pulse rings */
-    .signal span {
+    #loader {
       position: absolute;
-      inset: 0;
-      margin: auto;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #c2410c;
-      box-shadow: 0 0 18px rgba(194, 65, 12, 0.9);
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 240px;
+      text-align: center;
+      font-family: "Times New Roman", Georgia, serif;
     }
-    .signal .ring {
-      width: 18px;
-      height: 18px;
-      background: transparent;
-      border: 1px solid rgba(194, 65, 12, 0.7);
-      box-shadow: none;
-      animation: pulse 2.4s ease-out infinite;
+    #loader .code {
+      font-size: 12px; letter-spacing: 0.35em; text-transform: uppercase;
+      color: #c2410c; margin: 0 0 12px;
     }
-    .signal .ring.r2 { animation-delay: 0.8s; }
-    .signal .ring.r3 { animation-delay: 1.6s; }
-    @keyframes pulse {
-      0%   { width: 18px; height: 18px; opacity: 0.9; }
-      100% { width: 120px; height: 120px; opacity: 0; }
+    #bar { width: 100%; height: 3px; background: rgba(255,255,255,0.12); border-radius: 2px; overflow: hidden; }
+    #bar-fill { width: 0%; height: 100%; background: #c2410c; transition: width 0.2s ease; }
+    #err { color: #e06a4a; font-size: 12px; margin-top: 12px; display: none; padding: 0 10px; }
+    #fs {
+      position: absolute; right: 12px; bottom: 12px; z-index: 3;
+      width: 36px; height: 36px;
+      display: none; align-items: center; justify-content: center;
+      padding: 0; border: none; border-radius: 6px;
+      background: rgba(0,0,0,0.5); color: #fff; cursor: pointer; opacity: 0.7;
+      transition: background 0.2s ease, opacity 0.2s ease;
     }
-    .code {
-      font-size: 13px;
-      letter-spacing: 0.35em;
-      color: #c2410c;
-      text-transform: uppercase;
-      margin: 0 0 10px;
-    }
-    .title {
-      font-size: 22px;
-      margin: 0 0 6px;
-      letter-spacing: 0.04em;
-    }
-    .sub {
-      font-size: 14px;
-      color: #8a8a93;
-      margin: 0;
-      font-style: italic;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .signal .ring { animation: none; opacity: 0.25; }
-    }
+    #fs:hover { background: rgba(0,0,0,0.82); opacity: 1; }
+    #fs svg { width: 19px; height: 19px; display: block; }
   </style>
 </head>
 <body>
-  <div class="stage">
-    <div class="signal" aria-hidden="true">
-      <span class="ring"></span>
-      <span class="ring r2"></span>
-      <span class="ring r3"></span>
-      <span></span>
+  <div id="stage">
+    <canvas id="unity-canvas" width="960" height="600" tabindex="-1"></canvas>
+    <div id="loader">
+      <p class="code">Signal 404</p>
+      <div id="bar"><div id="bar-fill"></div></div>
+      <p id="err"></p>
     </div>
-    <p class="code">Signal 404</p>
-    <h1 class="title">Build in progress</h1>
-    <p class="sub">The playable build will be dropped in here.</p>
+    <button id="fs" type="button" aria-label="Fullscreen" title="Fullscreen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"></path>
+      </svg>
+    </button>
   </div>
+
+  <script>
+    var canvas = document.querySelector("#unity-canvas");
+    var config = {
+      dataUrl: "Build/web2.data.unityweb",
+      frameworkUrl: "Build/web2.framework.js.unityweb",
+      codeUrl: "Build/web2.wasm.unityweb",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "Cheng Min",
+      productName: "Respond to Signal 404",
+      productVersion: "1.0",
+    };
+
+    var script = document.createElement("script");
+    script.src = "Build/web2.loader.js";
+    script.onload = function () {
+      createUnityInstance(canvas, config, function (progress) {
+        document.querySelector("#bar-fill").style.width = (100 * progress) + "%";
+      }).then(function (instance) {
+        document.querySelector("#loader").style.display = "none";
+        var fs = document.querySelector("#fs");
+        fs.style.display = "flex";
+        fs.onclick = function () { instance.SetFullscreen(1); };
+      }).catch(function (message) {
+        var err = document.querySelector("#err");
+        err.style.display = "block";
+        err.textContent = message;
+      });
+    };
+    document.body.appendChild(script);
+  </script>
 </body>
 </html>
