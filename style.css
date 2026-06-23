@@ -369,6 +369,15 @@ a:hover { opacity: 0.6; }
 .grid-thumb-10 { background-image: url('images/hypha.png'); }
 .grid-thumb-11 { background-image: url('images/grandmasday.png'); }
 
+/* Game Art — placeholder tiles (warm gradients matching site accent). */
+/* Replace each with: background-image: url('images/game-art-N.jpg'); */
+.ga-thumb-1 { background: linear-gradient(135deg, #f59e0b 0%, #e8590c 100%); }
+.ga-thumb-2 { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); }
+.ga-thumb-3 { background: linear-gradient(135deg, #e8590c 0%, #c2410c 100%); }
+.ga-thumb-4 { background: linear-gradient(135deg, #fcd34d 0%, #fb923c 100%); }
+.ga-thumb-5 { background: linear-gradient(135deg, #fb923c 0%, #ea580c 100%); }
+.ga-thumb-6 { background: linear-gradient(135deg, #fdba74 0%, #f59e0b 100%); }
+
 @media (max-width: 1100px) {
   .grid-all { grid-template-columns: repeat(3, 1fr); }
 }

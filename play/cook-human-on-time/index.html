@@ -1,90 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cook Human On Time — Build in progress</title>
-  <style>
-    html, body {
-      margin: 0;
-      height: 100%;
-      background: #1a0f07;
-      color: #f3e9dd;
-      font-family: "Times New Roman", Georgia, serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .stage {
-      text-align: center;
-      padding: 24px;
-    }
-    .pot {
-      position: relative;
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 28px;
-    }
-    /* simmering heat pulse rings */
-    .pot span {
-      position: absolute;
-      inset: 0;
-      margin: auto;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #f59e0b;
-      box-shadow: 0 0 18px rgba(245, 158, 11, 0.9);
-    }
-    .pot .ring {
-      width: 18px;
-      height: 18px;
-      background: transparent;
-      border: 1px solid rgba(245, 158, 11, 0.7);
-      box-shadow: none;
-      animation: pulse 2.4s ease-out infinite;
-    }
-    .pot .ring.r2 { animation-delay: 0.8s; }
-    .pot .ring.r3 { animation-delay: 1.6s; }
-    @keyframes pulse {
-      0%   { width: 18px; height: 18px; opacity: 0.9; }
-      100% { width: 120px; height: 120px; opacity: 0; }
-    }
-    .code {
-      font-size: 13px;
-      letter-spacing: 0.35em;
-      color: #f59e0b;
-      text-transform: uppercase;
-      margin: 0 0 10px;
-    }
-    .title {
-      font-size: 22px;
-      margin: 0 0 6px;
-      letter-spacing: 0.04em;
-    }
-    .sub {
-      font-size: 14px;
-      color: #b39a82;
-      margin: 0;
-      font-style: italic;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .pot .ring { animation: none; opacity: 0.25; }
-    }
-  </style>
-</head>
-<body>
-  <div class="stage">
-    <div class="pot" aria-hidden="true">
-      <span class="ring"></span>
-      <span class="ring r2"></span>
-      <span class="ring r3"></span>
-      <span></span>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | CookHuman3D</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" width=1280 height=720></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-warning"> </div>
+      <div id="unity-footer">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">CookHuman3D</div>
+      </div>
     </div>
-    <p class="code">Cook Human On Time</p>
-    <h1 class="title">Build in progress</h1>
-    <p class="sub">The playable build will be dropped in here.</p>
-  </div>
-</body>
+    <script>
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var warningBanner = document.querySelector("#unity-warning");
+
+      // Shows a temporary message banner/ribbon for a few seconds, or
+      // a permanent error message on top of the canvas if type=='error'.
+      // If type=='warning', a yellow highlight color is used.
+      // Modify or remove this function to customize the visually presented
+      // way that non-critical warnings and error messages are presented to the
+      // user.
+      function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        }
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
+
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/Web.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/Web.data.unityweb",
+        frameworkUrl: buildUrl + "/Web.framework.js.unityweb",
+        codeUrl: buildUrl + "/Web.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "CookHuman3D",
+        productVersion: "2.00",
+        showBanner: unityShowBanner,
+      };
+
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        container.className = "unity-mobile";
+
+        // To lower canvas resolution on mobile devices to gain some
+        // performance, uncomment the following line:
+        // config.devicePixelRatio = 1;
+
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+
+        unityShowBanner('WebGL builds are not supported on mobile devices.');
+      } else {
+        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
+
+        canvas.style.width = "1280px";
+        canvas.style.height = "720px";
+      }
+
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
 </html>

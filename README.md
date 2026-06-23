@@ -8,7 +8,7 @@ Cheng Min（伦敦 Game Designer）个人作品集网站源码。
 直接双击 `index.html` 用浏览器打开即可。无构建工具，纯 HTML / CSS / JS。
 
 ## 文件说明
-- `index.html` — 首页：intro 开场动画 + Hero + Selected Games 横向轮播 + All Projects 网格
+- `index.html` — 首页：intro 开场动画 + Hero + Selected Games 横向轮播 + All Game Projects 网格 + Game Art 网格（游戏美术，占位待替换）
 - `personal.html` — 个人页：画作 + 小说
 - `about.html` — 关于页：经历 / 工具 / 联系
 - `style.css` — 所有样式（CSS 变量在文件顶部，改色调改这里）
