@@ -97,10 +97,13 @@ a:hover { opacity: 0.6; }
 .hero-image {
   position: absolute;
   inset: 0;
+  /* Keep the photo clean / vivid at the top (no flat grey wash); a soft dark
+     vignette only along the bottom sits behind the headline for readability. */
   background-image:
-    radial-gradient(circle at 30% 40%, rgba(255,200,150,0.15), transparent 50%),
-    radial-gradient(circle at 70% 60%, rgba(150,180,255,0.1), transparent 50%),
-    linear-gradient(135deg, #2a2a2a 0%, #3d3530 50%, #1f1a17 100%);
+    linear-gradient(to top, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.32) 22%, rgba(0,0,0,0) 52%),
+    url('images/hero.png');
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,7 +130,17 @@ a:hover { opacity: 0.6; }
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+/* Role line — secondary to the name above it (identity first, role second). */
+.hero-text .hero-role {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.6vw, 34px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  opacity: 0.92;
   margin-bottom: 24px;
+  white-space: normal;
 }
 .hero-text p {
   font-size: clamp(15px, 1.2vw, 18px);
@@ -1157,4 +1170,13 @@ kbd {
 @media (max-width: 600px) {
   .play-wrap { max-width: 100%; }
   .project-meta { gap: 4px 8px; font-size: 12px; }
+}
+
+/* Image-download deterrents (casual only — pairs with the contextmenu/dragstart
+   blockers in lang.js). Stops drag-to-save and image text selection. Cannot stop
+   screenshots, DevTools, or opening the image URL directly. */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
 }

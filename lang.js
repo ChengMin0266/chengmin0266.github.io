@@ -26,3 +26,15 @@
     applyLang(detectDefault());
   });
 })();
+
+/* Image-download deterrents (casual only — cannot truly prevent saving:
+   screenshots, DevTools and direct image URLs always bypass this).
+   Blocks right-click "Save image as" and drag-to-save on <img> elements. */
+(function () {
+  document.addEventListener('contextmenu', function (e) {
+    if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+  });
+  document.addEventListener('dragstart', function (e) {
+    if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+  });
+})();
