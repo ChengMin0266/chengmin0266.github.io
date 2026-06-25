@@ -22,11 +22,17 @@
     </svg>
   </div>
 
+  <!-- 左侧目录轨道：橙子走 S 型往下滚，画出可见轨迹，到每个精选项目中部标注项目名（脚本在文件末尾） -->
+  <div class="roll-rail" aria-hidden="true">
+    <svg class="roll-track" width="100%" height="100%"><path class="roll-track-path" fill="none"></path></svg>
+    <div class="roll-orange"></div>
+    <div class="roll-label"></div>
+  </div>
+
   <header class="nav">
     <a href="index.html" class="nav-logo" data-en="Cheng Min" data-zh="闵珹">Cheng Min</a>
     <nav class="nav-links">
       <a href="#work" data-en="Work" data-zh="作品">Work</a>
-      <a href="personal.html" data-en="Personal" data-zh="个人">Personal</a>
       <a href="about.html" data-en="About" data-zh="关于">About</a>
     </nav>
     <div class="lang-toggle">
@@ -49,86 +55,142 @@
   <section id="work" class="work">
     <h2 class="section-title" data-en="Selected Games" data-zh="精选游戏作品">Selected Games</h2>
 
-    <div class="showcase-wrap">
-    <div class="showcase" data-marquee>
-      <div class="showcase-track">
-        <a href="interstellar-adventure.html" class="showcase-card">
-          <div class="showcase-thumb showcase-thumb-2"></div>
-          <div class="showcase-overlay">
-            <h3 data-en="Interstellar Adventure" data-zh="星际冒险">Interstellar Adventure</h3>
-            <p class="showcase-desc" data-en="RPG Sokoban game: collect crystals to repair your damaged spaceship and embark on a journey home." data-zh="RPG 推箱子：收集水晶，修复飞船，踏上归乡之旅。">RPG Sokoban game: collect crystals to repair your damaged spaceship and embark on a journey home.</p>
-            <p class="showcase-tag" data-en="Puzzle · Sokoban · Unity" data-zh="解谜 · 推箱子 · Unity">Puzzle · Sokoban · Unity</p>
-          </div>
-        </a>
-        <a href="tarduck.html" class="showcase-card">
-          <div class="showcase-thumb showcase-thumb-4"></div>
-          <div class="showcase-overlay">
-            <h3 data-en="Tarduck" data-zh="Tarduck">Tarduck</h3>
-            <p class="showcase-desc" data-en="A new project in the works — details coming soon." data-zh="正在开发的新项目 —— 详情即将公布。">A new project in the works — details coming soon.</p>
-            <p class="showcase-tag" data-en="Top-Down Shooter · Three.js" data-zh="顶视角射击 · Three.js">Top-Down Shooter · Three.js</p>
-          </div>
-        </a>
-        <a href="respond-to-signal-404.html" class="showcase-card">
-          <div class="showcase-thumb showcase-thumb-1"></div>
-          <div class="showcase-overlay">
-            <h3 data-en="Respond to Signal 404" data-zh="来自404的信号">Respond to Signal 404</h3>
-            <p class="showcase-desc" data-en="If you can hear it, it's already too late." data-zh="当你听见它的时候，已经太迟了。">If you can hear it, it's already too late.</p>
-            <p class="showcase-tag" data-en="Puzzle · Horror · Unity" data-zh="解谜 · 恐怖 · Unity">Puzzle · Horror · Unity</p>
-          </div>
-        </a>
-        <a href="cook-human-on-time.html" class="showcase-card">
-          <div class="showcase-thumb showcase-thumb-3"></div>
-          <div class="showcase-overlay">
-            <h3 data-en="Cook Human On Time" data-zh="人生调理">Cook Human On Time</h3>
-            <p class="showcase-desc" data-en="I will obey the Social Clock." data-zh="我将遵守社会时钟。">I will obey the Social Clock.</p>
-            <p class="showcase-tag" data-en="Simulation · Unity" data-zh="模拟 · Unity">Simulation · Unity</p>
-          </div>
-        </a>
-      </div>
-    </div>
-      <button type="button" class="showcase-nav showcase-prev" aria-label="Previous">
-        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18"></polyline></svg>
-      </button>
-      <button type="button" class="showcase-nav showcase-next" aria-label="Next">
-        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>
-      </button>
+    <div class="featured">
+      <article class="feature">
+        <div class="feature-media-col">
+          <p class="feature-award" data-en="★ Selected · London Games Festival 2024" data-zh="★ 入选 · 伦敦游戏节 2024">★ Selected · London Games Festival 2024</p>
+          <a class="feature-media" href="interstellar-adventure.html" aria-label="Interstellar Adventure">
+            <div class="feature-thumb feature-thumb-3"></div>
+            <video class="feature-preview" muted loop playsinline preload="metadata">
+              <source src="videos/interstellar-adventure-preview.mp4" type="video/mp4">
+            </video>
+          </a>
+          <p class="feature-caption" data-en="Interstellar Adventure is an RPG Sokoban game. The game combines traditional box-pushing with four unlockable abilities (Break Ice, Thorn Phase, Pull Box, Teleport) and an explicit positive/negative feedback-loop system that adapts the difficulty to player performance. I led the core gameplay loop, all 24 level layouts, the difficulty progression, and the narrative scaffolding that ties the systems to the story." data-zh="《星际冒险》是一款角色扮演类推箱子游戏。这款游戏将传统的推箱子玩法与四种可解锁能力（破冰、荆棘阶段、拉箱子、传送）以及一套明确的正负反馈循环系统相结合，能够根据玩家表现调整游戏难度。我主导了核心游戏循环、全部 24 个关卡的布局、难度递进以及将系统与故事联系起来的叙事框架。">Interstellar Adventure is an RPG Sokoban game. The game combines traditional box-pushing with four unlockable abilities (Break Ice, Thorn Phase, Pull Box, Teleport) and an explicit positive/negative feedback-loop system that adapts the difficulty to player performance. I led the core gameplay loop, all 24 level layouts, the difficulty progression, and the narrative scaffolding that ties the systems to the story.</p>
+        </div>
+        <div class="feature-info">
+          <h3><a href="interstellar-adventure.html" data-en="Interstellar Adventure" data-zh="星际冒险">Interstellar Adventure</a></h3>
+          <dl class="feature-meta">
+            <div><dt data-en="Role" data-zh="职责">Role</dt><dd data-en="Core Loop &amp; Level Designer" data-zh="游戏玩法 &amp; 关卡设计师">Core Loop &amp; Level Designer</dd></div>
+            <div><dt data-en="Engine" data-zh="引擎">Engine</dt><dd data-en="Unity" data-zh="Unity">Unity</dd></div>
+            <div><dt data-en="Year" data-zh="年份">Year</dt><dd data-en="2023" data-zh="2023">2023</dd></div>
+            <div><dt data-en="Team Size" data-zh="团队规模">Team Size</dt><dd data-en="3 people" data-zh="3 人">3 people</dd></div>
+          </dl>
+          <h4 class="feature-kf-title" data-en="Key Features" data-zh="核心亮点">Key Features</h4>
+          <ul class="feature-kf">
+            <li data-en="Paired positive + negative feedback loops keep the late game from going stale." data-zh="正负反馈循环并行，既带来了成就感与心流，又保留难度与悬念。">Paired positive + negative feedback loops keep the late game from going stale.</li>
+            <li data-en="Surrendering a skill repairs a ship panel — losing power feels like progress." data-zh="上交技能即修复一块飞船面板——失去能力反而在推进游戏进度。">Surrendering a skill repairs a ship panel — losing power feels like progress.</li>
+            <li data-en="24 levels: a 7-level tutorial, 16 skill levels, and a final escape stage." data-zh="24 关：7 关教学 + 16 关技能专题 + 最终逃离关。">24 levels: a 7-level tutorial, 16 skill levels, and a final escape stage.</li>
+            <li data-en="UAL MA Game Design final major project." data-zh="UAL 游戏设计硕士毕业项目。">UAL MA Game Design final major project.</li>
+            <li data-en="Exhibited at Game Day X during the 2024 London Games Festival." data-zh="在 2024 年 London Games Festival 的活动 Game Day X 中参与展出。">Exhibited at Game Day X during the 2024 London Games Festival.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="feature">
+        <div class="feature-media-col">
+          <a class="feature-media" href="cook-human-on-time.html" aria-label="Cook Human On Time">
+            <div class="feature-thumb feature-thumb-2"></div>
+            <video class="feature-preview" muted loop playsinline preload="metadata">
+              <source src="videos/cook-human-on-time-preview.mp4" type="video/mp4">
+            </video>
+          </a>
+          <p class="feature-caption" data-en="Playable in-browser — drag each life into the right pot before time runs out." data-zh="浏览器内可玩 —— 在时间耗尽前，把每个小人拖进对的锅里。">Playable in-browser — drag each life into the right pot before time runs out.</p>
+        </div>
+        <div class="feature-info">
+          <h3><a href="cook-human-on-time.html" data-en="Cook Human On Time" data-zh="人类烹饪计划">Cook Human On Time</a></h3>
+          <dl class="feature-meta">
+            <div><dt data-en="Role" data-zh="职责">Role</dt><dd data-en="Game, Narrative &amp; UI/UX Designer" data-zh="游戏 · 叙事 &amp; UI/UX 设计师">Game, Narrative &amp; UI/UX Designer</dd></div>
+            <div><dt data-en="Engine" data-zh="引擎">Engine</dt><dd data-en="Unity" data-zh="Unity">Unity</dd></div>
+            <div><dt data-en="Year" data-zh="年份">Year</dt><dd data-en="2023" data-zh="2023">2023</dd></div>
+            <div><dt data-en="Team Size" data-zh="团队规模">Team Size</dt><dd data-en="3 people" data-zh="3 人">3 people</dd></div>
+          </dl>
+          <h4 class="feature-kf-title" data-en="Key Features" data-zh="核心亮点">Key Features</h4>
+          <ul class="feature-kf">
+            <li data-en="Stages the 'social clock' as a kitchen — life milestones become ingredients cooked on time." data-zh="把「社会时钟」演成一间厨房——人生里程碑变成要按时烹好的食材。">Stages the 'social clock' as a kitchen — life milestones become ingredients cooked on time.</li>
+            <li data-en="Time management under pressure: juggle several lives against tightening deadlines." data-zh="高压下的时间管理：同时照看多条人生，与越来越紧的截止赛跑。">Time management under pressure: juggle several lives against tightening deadlines.</li>
+            <li data-en="Deliberately clean UI, so players feel the clock — not the clutter." data-zh="刻意保持简洁的界面，让玩家感到的是时钟的压力，而非界面的杂乱。">Deliberately clean UI, so players feel the clock — not the clutter.</li>
+            <li data-en="Original concept and central metaphor; led game, narrative &amp; UI/UX design." data-zh="原创主题与核心隐喻；主导游戏、叙事与 UI/UX 设计。">Original concept and central metaphor; led game, narrative &amp; UI/UX design.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="feature">
+        <div class="feature-media-col">
+          <a class="feature-media" href="tarduck.html" aria-label="Tarduck">
+            <div class="feature-thumb feature-thumb-4"></div>
+          </a>
+          <p class="feature-caption" data-en="Playable prototype — a full extraction-shooter loop, validated end to end." data-zh="可玩原型 —— 一整套搜打撤循环，端到端验证。">Playable prototype — a full extraction-shooter loop, validated end to end.</p>
+        </div>
+        <div class="feature-info">
+          <h3><a href="tarduck.html" data-en="Tarduck" data-zh="Tarduck">Tarduck</a></h3>
+          <dl class="feature-meta">
+            <div><dt data-en="Role" data-zh="职责">Role</dt><dd data-en="Game Designer" data-zh="游戏设计师">Game Designer</dd></div>
+            <div><dt data-en="Engine" data-zh="引擎">Engine</dt><dd data-en="Web · Three.js" data-zh="Web · Three.js">Web · Three.js</dd></div>
+            <div><dt data-en="Year" data-zh="年份">Year</dt><dd data-en="2026" data-zh="2026">2026</dd></div>
+            <div><dt data-en="Team Size" data-zh="团队规模">Team Size</dt><dd data-en="2 people" data-zh="2 人">2 people</dd></div>
+          </dl>
+          <h4 class="feature-kf-title" data-en="Key Features" data-zh="核心亮点">Key Features</h4>
+          <ul class="feature-kf">
+            <li data-en="Full extraction loop prototyped in days via an AI-assisted workflow." data-zh="借助 AI 辅助工作流，几天内做出完整搜打撤循环原型。">Full extraction loop prototyped in days via an AI-assisted workflow.</li>
+            <li data-en="Deep systems: locational damage &amp; limb fractures, encumbrance, talent tree." data-zh="深度系统：身体局部伤害、断肢射击影响、负重、天赋树。">Deep systems: locational damage &amp; limb fractures, encumbrance, talent tree.</li>
+            <li data-en="The core tension: 'one more crate, or extract now?' The dynamic interplay between increasing marginal returns and accumulating risk exposure." data-zh="核心张力：再开一个箱子，还是现在就撤？边际收益递增与风险敞口累积之间的动态博弈。">The core tension: 'one more crate, or extract now?'</li>
+            <li data-en="Grid inventory &amp; stash economy with real risk/reward." data-zh="网格背包与仓库经济，风险与收益真实成立。">Grid inventory &amp; stash economy with real risk/reward.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="feature">
+        <div class="feature-media-col">
+          <a class="feature-media" href="respond-to-signal-404.html" aria-label="Respond to Signal 404">
+            <div class="feature-thumb feature-thumb-1"></div>
+            <video class="feature-preview" muted loop playsinline preload="metadata">
+              <source src="videos/respond-to-signal-404-trailer.mp4" type="video/mp4">
+            </video>
+          </a>
+          <p class="feature-caption" data-en="Playable in-browser, with a self-hosted trailer — a top-down campus puzzle-horror." data-zh="浏览器内可玩，附自托管预告 —— 顶视角校园解谜恐怖。">Playable in-browser, with a self-hosted trailer — a top-down campus puzzle-horror.</p>
+        </div>
+        <div class="feature-info">
+          <h3><a href="respond-to-signal-404.html" data-en="Respond to Signal 404" data-zh="来自404的信号">Respond to Signal 404</a></h3>
+          <dl class="feature-meta">
+            <div><dt data-en="Role" data-zh="职责">Role</dt><dd data-en="Game &amp; Narrative Designer · Sound Design" data-zh="游戏策划 &amp; 文案策划 · 音效设计">Game &amp; Narrative Designer · Sound Design</dd></div>
+            <div><dt data-en="Engine" data-zh="引擎">Engine</dt><dd data-en="Unity" data-zh="Unity">Unity</dd></div>
+            <div><dt data-en="Year" data-zh="年份">Year</dt><dd data-en="2026" data-zh="2026">2026</dd></div>
+            <div><dt data-en="Team Size" data-zh="团队规模">Team Size</dt><dd data-en="6 people" data-zh="6 人">6 people</dd></div>
+          </dl>
+          <h4 class="feature-kf-title" data-en="Key Features" data-zh="核心亮点">Key Features</h4>
+          <ul class="feature-kf">
+            <li data-en="A top-down campus puzzle-horror set in a school that keeps changing." data-zh="顶视角校园解谜恐怖，舞台是一所不断变样的学校。">A top-down campus puzzle-horror set in a school that keeps changing.</li>
+            <li data-en="Beneath the horror, a story about school bullying and discrimination." data-zh="恐怖外壳之下，是关于校园霸凌、以及歧视的故事。">Beneath the horror, a story about school bullying — and looking away.</li>
+            <li data-en="A lens you toggle (Q) reveals hidden signals and rooms that shouldn't exist." data-zh="可切换颜色的镜片揭示隐藏信号与本不该存在的房间。">A lens you toggle (Q) reveals hidden signals and rooms that shouldn't exist.</li>
+            <li data-en="Led game &amp; narrative design; built every environment and all sound effects." data-zh="主导游戏与叙事设计；搭建全部场景并独立完成所有音效。">Led game &amp; narrative design; built every environment and all sound effects.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="feature">
+        <div class="feature-media-col">
+          <a class="feature-media" href="invisible-egyptian.html" aria-label="Invisible Egyptian">
+            <div class="feature-thumb feature-thumb-5"></div>
+          </a>
+          <p class="feature-caption" data-en="Play Malek, an archaeologist deciphering hieroglyphs inside an ancient tomb — the puzzles span both the screen and a printed companion journal you hold in your hands." data-zh="扮演考古学家 Malek，在古墓中破译象形文字——谜题横跨屏幕与你手中的实体配套手册。">Play Malek, an archaeologist deciphering hieroglyphs inside an ancient tomb — the puzzles span both the screen and a printed companion journal you hold in your hands.</p>
+        </div>
+        <div class="feature-info">
+          <h3><a href="invisible-egyptian.html" data-en="Invisible Egyptian" data-zh="看不见的埃及人">Invisible Egyptian</a></h3>
+          <dl class="feature-meta">
+            <div><dt data-en="Role" data-zh="职责">Role</dt><dd data-en="Digital Game &amp; Physical Book Designer" data-zh="数字游戏 &amp; 实体手册设计师">Digital Game &amp; Physical Book Designer</dd></div>
+            <div><dt data-en="Engine" data-zh="引擎">Engine</dt><dd data-en="Unity" data-zh="Unity">Unity</dd></div>
+            <div><dt data-en="Year" data-zh="年份">Year</dt><dd data-en="2023" data-zh="2023">2023</dd></div>
+            <div><dt data-en="Team Size" data-zh="团队规模">Team Size</dt><dd data-en="6 people" data-zh="6 人">6 people</dd></div>
+          </dl>
+          <h4 class="feature-kf-title" data-en="Key Features" data-zh="核心亮点">Key Features</h4>
+          <ul class="feature-kf">
+            <li data-en="Cross-medium puzzles: the screen and a printed companion journal must be used together to progress." data-zh="跨媒介解谜：屏幕与配套实体手册必须结合使用才能推进。">Cross-medium puzzles: the screen and a printed companion journal must be used together to progress.</li>
+            <li data-en="Play Malek, an archaeologist decoding hieroglyphs deep inside an ancient tomb." data-zh="扮演考古学家 Malek，在古墓深处破译象形文字。">Play Malek, an archaeologist decoding hieroglyphs deep inside an ancient tomb.</li>
+            <li data-en="Story-rich: a historical narrative woven around Egyptian hieroglyphs and archaeology." data-zh="叙事丰富：围绕古埃及象形文字与考古展开的历史故事。">Story-rich: a historical narrative woven around Egyptian hieroglyphs and archaeology.</li>
+            <li data-en="Built in 10 weeks by a 6-person team across game design, animation, and history." data-zh="由 6 人跨学科团队（游戏设计、动画、历史）用 10 周完成。">Built in 10 weeks by a 6-person team across game design, animation, and history.</li>
+          </ul>
+        </div>
+      </article>
     </div>
 
-    <h3 class="section-subtitle" data-en="All Game Projects" data-zh="全部游戏项目">All Game Projects</h3>
+    <h3 class="section-subtitle" data-en="Demos" data-zh="Demo">Demos</h3>
     <div class="grid-all">
-      <a href="interstellar-adventure.html" class="grid-item">
-        <div class="grid-thumb grid-thumb-1">
-          <video class="grid-preview" muted loop playsinline preload="metadata">
-            <source src="videos/interstellar-adventure-preview.mp4" type="video/mp4">
-          </video>
-        </div>
-        <h4 data-en="Interstellar Adventure" data-zh="星际冒险">Interstellar Adventure</h4>
-        <p data-en="Puzzle · Sokoban · Unity · 2023" data-zh="解谜 · 推箱子 · Unity · 2023">Puzzle · Sokoban · Unity · 2023</p>
-      </a>
-      <a href="tarduck.html" class="grid-item">
-        <div class="grid-thumb grid-thumb-2"></div>
-        <h4 data-en="Tarduck" data-zh="Tarduck">Tarduck</h4>
-        <p data-en="Top-Down Shooter · Three.js · 2026" data-zh="顶视角射击 · Three.js · 2026">Top-Down Shooter · Three.js · 2026</p>
-      </a>
-      <a href="respond-to-signal-404.html" class="grid-item">
-        <div class="grid-thumb grid-thumb-3"></div>
-        <h4 data-en="Respond to Signal 404" data-zh="来自404的信号">Respond to Signal 404</h4>
-        <p data-en="Puzzle · Horror · Unity · 2026" data-zh="解谜 · 恐怖 · Unity · 2026">Puzzle · Horror · Unity · 2026</p>
-      </a>
-      <a href="cook-human-on-time.html" class="grid-item">
-        <div class="grid-thumb grid-thumb-4">
-          <video class="grid-preview" muted loop playsinline preload="metadata">
-            <source src="videos/cook-human-on-time-preview.mp4" type="video/mp4">
-          </video>
-        </div>
-        <h4 data-en="Cook Human On Time" data-zh="人生调理">Cook Human On Time</h4>
-        <p data-en="Simulation · Unity · 2023" data-zh="模拟 · Unity · 2023">Simulation · Unity · 2023</p>
-      </a>
-      <a href="#" class="grid-item">
-        <div class="grid-thumb grid-thumb-5"></div>
-        <h4 data-en="Invisible Egyptian" data-zh="隐形的埃及人">Invisible Egyptian</h4>
-        <p data-en="Puzzle · Unity · 2023" data-zh="解谜 · Unity · 2023">Puzzle · Unity · 2023</p>
-      </a>
       <a href="#" class="grid-item">
         <div class="grid-thumb grid-thumb-6"></div>
         <h4 data-en="Mother" data-zh="母亲">Mother</h4>
@@ -161,36 +223,16 @@
       </a>
     </div>
 
-    <h3 class="section-subtitle" data-en="Game Art" data-zh="游戏美术">Game Art</h3>
+    <h3 class="section-subtitle" data-en="Art" data-zh="美术">Art</h3>
     <div class="grid-all">
       <a href="#" class="grid-item">
         <div class="grid-thumb ga-thumb-1"></div>
-        <h4 data-en="Game Art 01" data-zh="游戏美术 01">Game Art 01</h4>
+        <h4 data-en="Art 01" data-zh="美术 01">Art 01</h4>
         <p data-en="Placeholder · replace me" data-zh="占位 · 待替换">Placeholder · replace me</p>
       </a>
       <a href="#" class="grid-item">
         <div class="grid-thumb ga-thumb-2"></div>
-        <h4 data-en="Game Art 02" data-zh="游戏美术 02">Game Art 02</h4>
-        <p data-en="Placeholder · replace me" data-zh="占位 · 待替换">Placeholder · replace me</p>
-      </a>
-      <a href="#" class="grid-item">
-        <div class="grid-thumb ga-thumb-3"></div>
-        <h4 data-en="Game Art 03" data-zh="游戏美术 03">Game Art 03</h4>
-        <p data-en="Placeholder · replace me" data-zh="占位 · 待替换">Placeholder · replace me</p>
-      </a>
-      <a href="#" class="grid-item">
-        <div class="grid-thumb ga-thumb-4"></div>
-        <h4 data-en="Game Art 04" data-zh="游戏美术 04">Game Art 04</h4>
-        <p data-en="Placeholder · replace me" data-zh="占位 · 待替换">Placeholder · replace me</p>
-      </a>
-      <a href="#" class="grid-item">
-        <div class="grid-thumb ga-thumb-5"></div>
-        <h4 data-en="Game Art 05" data-zh="游戏美术 05">Game Art 05</h4>
-        <p data-en="Placeholder · replace me" data-zh="占位 · 待替换">Placeholder · replace me</p>
-      </a>
-      <a href="#" class="grid-item">
-        <div class="grid-thumb ga-thumb-6"></div>
-        <h4 data-en="Game Art 06" data-zh="游戏美术 06">Game Art 06</h4>
+        <h4 data-en="Art 02" data-zh="美术 02">Art 02</h4>
         <p data-en="Placeholder · replace me" data-zh="占位 · 待替换">Placeholder · replace me</p>
       </a>
     </div>
@@ -203,131 +245,6 @@
     </div>
   </footer>
   <script src="lang.js"></script>
-  <script>
-    (function initShowcase() {
-      const showcase = document.querySelector('[data-marquee]');
-      if (!showcase) return;
-      const track = showcase.querySelector('.showcase-track');
-      if (!track) return;
-
-      // Duplicate cards so the track can loop seamlessly
-      Array.from(track.children).forEach((card) => {
-        const clone = card.cloneNode(true);
-        clone.setAttribute('aria-hidden', 'true');
-        clone.setAttribute('tabindex', '-1');
-        track.appendChild(clone);
-      });
-
-      let position = 0;
-      const speed = 0.4;
-      let hoverPaused = false;
-      let offscreenPaused = false;
-      let isDragging = false;
-      let didDrag = false;
-      let dragStartX = 0;
-      let dragStartPos = 0;
-      let halfWidth = 0;
-      let isAnimating = false;
-      let animId = 0;
-
-      function measure() { halfWidth = track.scrollWidth / 2; }
-      measure();
-      window.addEventListener('resize', measure);
-
-      function paused() { return hoverPaused || offscreenPaused || isDragging || isAnimating; }
-
-      function step() {
-        if (!paused() && halfWidth > 0) {
-          position -= speed;
-          if (position <= -halfWidth) position += halfWidth;
-          track.style.transform = 'translateX(' + position + 'px)';
-        }
-        requestAnimationFrame(step);
-      }
-
-      showcase.addEventListener('mouseenter', () => { hoverPaused = true; });
-      showcase.addEventListener('mouseleave', () => { hoverPaused = false; });
-
-      showcase.addEventListener('pointerdown', (e) => {
-        if (e.target.closest('.showcase-nav')) return; // let arrow buttons handle their own clicks
-        isDragging = true;
-        didDrag = false;
-        dragStartX = e.clientX;
-        dragStartPos = position;
-        showcase.classList.add('is-dragging');
-        try { showcase.setPointerCapture(e.pointerId); } catch (_) {}
-      });
-      showcase.addEventListener('pointermove', (e) => {
-        if (!isDragging) return;
-        const dx = e.clientX - dragStartX;
-        if (Math.abs(dx) > 5) didDrag = true;
-        let next = dragStartPos + dx;
-        while (next <= -halfWidth) next += halfWidth;
-        while (next > 0) next -= halfWidth;
-        position = next;
-        track.style.transform = 'translateX(' + position + 'px)';
-      });
-      function endDrag() {
-        isDragging = false;
-        showcase.classList.remove('is-dragging');
-      }
-      showcase.addEventListener('pointerup', endDrag);
-      showcase.addEventListener('pointercancel', endDrag);
-
-      // Swallow the click that follows a drag so links don't fire mid-scrub
-      showcase.addEventListener('click', (e) => {
-        if (didDrag) { e.preventDefault(); e.stopPropagation(); return; }
-        // setPointerCapture retargets the click to this container, so a card's
-        // <a> never navigates on a clean click. Resolve the card under the
-        // cursor and follow its link manually.
-        const card = document.elementFromPoint(e.clientX, e.clientY)?.closest('.showcase-card');
-        const href = card && card.getAttribute('href');
-        if (href && href !== '#') window.location.href = href;
-      }, true);
-
-      // Manual arrow nav: smoothly nudge the track by one card on top of the auto-scroll
-      function cardStep() {
-        const c = track.children;
-        if (c.length >= 2) return Math.abs(c[1].offsetLeft - c[0].offsetLeft) || c[0].offsetWidth;
-        return c.length ? c[0].offsetWidth : 0;
-      }
-      function nudge(dir) {
-        // dir = +1 -> previous (shift right), -1 -> next (shift left)
-        const start = position;
-        const target = start + dir * cardStep();
-        const startT = performance.now();
-        const dur = 450;
-        const myId = ++animId;
-        isAnimating = true;
-        function anim(now) {
-          if (myId !== animId) return;
-          const t = Math.min(1, (now - startT) / dur);
-          const e = 1 - Math.pow(1 - t, 3); // easeOutCubic
-          let p = start + (target - start) * e;
-          while (p <= -halfWidth) p += halfWidth;
-          while (p > 0) p -= halfWidth;
-          position = p;
-          track.style.transform = 'translateX(' + position + 'px)';
-          if (t < 1) requestAnimationFrame(anim);
-          else if (myId === animId) isAnimating = false;
-        }
-        requestAnimationFrame(anim);
-      }
-      const prevBtn = document.querySelector('.showcase-prev');
-      const nextBtn = document.querySelector('.showcase-next');
-      if (prevBtn) prevBtn.addEventListener('click', () => nudge(1));
-      if (nextBtn) nextBtn.addEventListener('click', () => nudge(-1));
-
-      if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver((entries) => {
-          offscreenPaused = !entries[0].isIntersecting;
-        });
-        io.observe(showcase);
-      }
-
-      requestAnimationFrame(step);
-    })();
-  </script>
   <script>
     (function initIntro() {
       const intro = document.querySelector('[data-intro]');
@@ -413,8 +330,8 @@
   </script>
   <script>
     (function initGridPreviews() {
-      document.querySelectorAll('.grid-item').forEach((item) => {
-        const video = item.querySelector('.grid-preview');
+      document.querySelectorAll('.grid-item, .feature').forEach((item) => {
+        const video = item.querySelector('.grid-preview, .feature-preview');
         if (!video) return;
         item.addEventListener('mouseenter', () => {
           video.currentTime = 0;
@@ -425,6 +342,160 @@
           video.currentTime = 0;
         });
       });
+    })();
+  </script>
+  <script>
+    // 左侧目录轨道：橙子贴项目左侧走 S 型往下滚，身后画出可见轨迹；
+    // 滚到每个精选项目（.feature）中部时，在橙子那行右对齐显示项目名（随中英切换）。
+    (function initRollRail() {
+      const rail = document.querySelector('.roll-rail');
+      if (!rail) return;
+      const orange = rail.querySelector('.roll-orange');
+      const label = rail.querySelector('.roll-label');
+      const pathEl = rail.querySelector('.roll-track-path');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const GAP = 20;            // 橙子最右时距项目左边框的间隙 px（越小越贴边框）
+      const MIN_LEFT = 8;        // 橙子最左时距屏幕左缘的间隙 px
+      const TAIL_PERIODS = 1.0;  // 身后轨迹长度＝几个来回（1≈一个完整 U 弯；越大尾巴越长）
+      const LAP = Math.PI;       // 一个“来回”＝半个正弦周期（一个 U 弯）；每个精选项目走一个
+      const SAMPLES = 200;       // 轨迹取样点数（越大线越顺滑）
+      const TAU = Math.PI * 2;
+
+      const features = Array.from(document.querySelectorAll('.feature')); // 精选项目（每个走一个来回）
+      let borderX = 0, size = 52, vw = 0, vh = 0, yTop = 0, yBot = 0,
+          pathLen = 0, heroH = 0, knots = [], appearScroll = 0, pAppear = 0;
+
+      // 相位锚点：滚到第 k 个精选项目居中时正好走完 k 个来回（到 404=第4个 → 四个来回）
+      function buildKnots() {
+        const maxScroll = Math.max(1, document.documentElement.scrollHeight - vh);
+        const startP = (heroH * 0.6) / maxScroll;        // 相位起点（轨迹形状基准，勿与淡入时机混用）
+        knots = [{ p: startP, phase: 0 }];
+        features.forEach(function (f, k) {
+          const r = f.getBoundingClientRect();
+          const docCenter = r.top + window.scrollY + r.height / 2;
+          knots.push({ p: (docCenter - vh / 2) / maxScroll, phase: (k + 1) * LAP });
+        });
+        knots.sort(function (a, b) { return a.p - b.p; });
+      }
+
+      // 锚点分段线性插值（含两端外推）→ 任意进度 p 的相位
+      function phaseAt(p) {
+        if (knots.length < 2) return p * TAU;
+        let a = knots[0], b = knots[1];
+        for (let i = 0; i < knots.length - 1; i++) {
+          if (p <= knots[i + 1].p || i === knots.length - 2) { a = knots[i]; b = knots[i + 1]; break; }
+        }
+        return a.phase + (b.phase - a.phase) * (p - a.p) / (b.p - a.p);
+      }
+
+      // 当前进度处「一个来回」占多少 p（尾巴长度据此自适应）
+      function periodP(p) {
+        for (let i = 0; i < knots.length - 1; i++) {
+          if (p <= knots[i + 1].p) return Math.max(1e-4, knots[i + 1].p - knots[i].p);
+        }
+        const n = knots.length;
+        return Math.max(1e-4, knots[n - 1].p - knots[n - 2].p);
+      }
+
+      // 给定滚动进度 p（0..1）→ 橙子左上角坐标；描线与橙子共用此函数以保证贴合
+      function sample(p) {
+        const xRight = borderX - GAP - size;   // 最右贴边框
+        const center = (MIN_LEFT + xRight) / 2;
+        const amp = Math.max(0, (xRight - MIN_LEFT) / 2); // 摆幅铺满左侧空白；窄屏归 0
+        const x = center + amp * Math.sin(phaseAt(p));
+        // 纵向：从出场点 pAppear 才开始下行（出场瞬间在 yTop，与标题齐平），到页尾到 yBot
+        const yProg = Math.min(1, Math.max(0, (p - pAppear) / Math.max(1e-3, 1 - pAppear)));
+        const y = yTop + (yBot - yTop) * yProg;
+        return { x: x, y: y };
+      }
+
+      function buildPath() {
+        let d = '';
+        for (let i = 0; i <= SAMPLES; i++) {
+          const t = i / SAMPLES;
+          const s = sample(pAppear + t * (1 - pAppear)); // 只画出场点之后的轨迹（顶部不留水平线）
+          d += (i === 0 ? 'M' : 'L') + (s.x + size / 2).toFixed(1) + ' ' + (s.y + size / 2).toFixed(1) + ' ';
+        }
+        pathEl.setAttribute('d', d.trim());
+        pathLen = pathEl.getTotalLength();
+        pathEl.style.strokeDasharray = pathLen;
+        pathEl.style.strokeDashoffset = pathLen; // 初始全藏，滚动时逐段显现
+      }
+
+      function measure() {
+        vw = window.innerWidth; vh = window.innerHeight;
+        size = orange.offsetWidth || 52;
+        yTop = vh * 0.12;
+        yBot = vh - size - vh * 0.12;
+        const hero = document.querySelector('.hero');
+        heroH = hero ? hero.offsetHeight : vh;
+        // 出场时机 + 纵向起点：hero 滚到一半就让橙子在顶端出现、开始往下滚
+        const maxS = Math.max(1, document.documentElement.scrollHeight - vh);
+        appearScroll = heroH * 0.5;                 // hero 滚一半出场（想更早改小、更晚改大）
+        pAppear = appearScroll / maxS;              // 纵向自此开始下行
+        const work = document.querySelector('.work');
+        borderX = work
+          ? work.getBoundingClientRect().left + (parseFloat(getComputedStyle(work).paddingLeft) || 0)
+          : vw * 0.25;
+        buildKnots();   // 必须在 buildPath 前：sample → phaseAt 依赖 knots
+        buildPath();
+      }
+
+      let ticking = false;
+      function update() {
+        ticking = false;
+        const maxScroll = Math.max(1, document.documentElement.scrollHeight - vh);
+        const p = Math.min(1, Math.max(0, window.scrollY / maxScroll));
+
+        // 橙子沿轨迹走 + 随下行旋转（滚动感）
+        const s = sample(p);
+        const deg = (s.y - yTop) / (size / 2) * (180 / Math.PI);
+        orange.style.transform = 'translate(' + s.x + 'px,' + s.y + 'px) rotate(' + deg + 'deg)';
+
+        // 与 Selected Games 标题齐平时才淡入（appearScroll 在 measure 里据标题位置算出）
+        rail.classList.toggle('is-active', window.scrollY > appearScroll);
+
+        // 可见轨迹：橙子身后留约一个 U 弯的短尾（轨迹空间已从出场点起算）
+        if (pathLen) {
+          const t = Math.min(1, Math.max(0, (p - pAppear) / Math.max(1e-3, 1 - pAppear)));
+          const head = t * pathLen;                                  // 橙子在轨迹上的弧长位置
+          const pathPerP = pathLen / Math.max(1e-3, 1 - pAppear);    // 一个 p 单位对应的弧长
+          const len = Math.min(head, periodP(p) * TAIL_PERIODS * pathPerP);
+          pathEl.style.strokeDasharray = '0 ' + (head - len) + ' ' + len + ' ' + pathLen;
+          pathEl.style.strokeDashoffset = '0';
+        }
+
+        // 标签：仅当某个精选项目正好横跨视口中线时显示其名；项目之间空隙、最后一个之后都不显示
+        const vc = vh / 2;
+        let active = null;
+        for (const f of features) {
+          const r = f.getBoundingClientRect();
+          if (r.top <= vc && r.bottom >= vc) { active = f; break; }
+        }
+        if (active) {
+          const link = active.querySelector('.feature-info h3 a') || active.querySelector('h3');
+          label.textContent = link ? link.textContent : '';
+          label.style.right = (vw - (borderX - GAP)) + 'px'; // 横向固定右贴边框（不随橙子左右摆）
+          label.style.top = (s.y - 6) + 'px';                // 竖直跟随橙子、落在橙子正上方（translateY(-100%) 已上移）
+          label.classList.add('is-visible');
+        } else {
+          label.classList.remove('is-visible');
+        }
+      }
+      function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+
+      if (reduce) {            // 关动画偏好：静止摆中部，不画轨迹
+        measure();
+        const s = sample(0.5);
+        orange.style.transform = 'translate(' + s.x + 'px,' + s.y + 'px)';
+        rail.classList.add('is-active');
+        return;
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', function () { measure(); update(); });
+      measure();
+      update();
     })();
   </script>
 </body>

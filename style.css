@@ -191,127 +191,163 @@ a:hover { opacity: 0.6; }
 #work .section-title { color: #e8590c; font-style: normal; font-weight: 700; }     /* Selected Games — deep saturated orange */
 #work .section-subtitle { color: #f59e0b; font-style: normal; font-weight: 700; }  /* All Projects — orange-yellow */
 
-/* ---------- Showcase (auto-marquee + drag) ---------- */
-.showcase {
-  position: relative;
-  overflow: hidden;
-  margin: 0 calc(var(--pad) * -1);
-  padding: 0 var(--pad);
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: pan-y;
-}
-.showcase.is-dragging { cursor: grabbing; }
-.showcase::before,
-.showcase::after {
-  content: "";
-  position: absolute;
-  top: 0; bottom: 0;
-  width: clamp(40px, 8vw, 120px);
-  z-index: 3;
-  pointer-events: none;
-}
-.showcase::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
-.showcase::after  { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
-.showcase-wrap { position: relative; }
-.showcase-nav {
-  position: absolute;
-  top: 50%;
-  z-index: 4;
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: none;
-  background: none;
-  color: var(--fg);
-  cursor: pointer;
-  opacity: 0.5;
-  transition: opacity 0.2s ease;
-}
-.showcase-nav svg { display: block; }
-.showcase-nav:hover { opacity: 1; }
-.showcase-nav:active svg { transform: scale(0.86); }
-/* Bare arrows centered in the side gutter, clear of the card images */
-.showcase-prev { left: calc(var(--pad) * -0.5); transform: translate(-50%, -50%); }
-.showcase-next { right: calc(var(--pad) * -0.5); transform: translate(50%, -50%); }
-@media (max-width: 600px) {
-  .showcase-nav { display: none; }
-}
-.showcase-track {
+/* ---------- Featured projects (bordered two-column cards) ---------- */
+.featured {
   display: flex;
-  gap: clamp(16px, 2vw, 28px);
-  width: max-content;
-  will-change: transform;
+  flex-direction: column;
+  gap: clamp(40px, 5vw, 72px);
 }
-.showcase-card {
+.feature {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(24px, 3vw, 48px);
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(18px, 2.2vw, 32px);
+  background: rgba(255, 255, 255, 0.35);
+}
+/* Alternate which side the image sits on for visual rhythm */
+.feature:nth-child(even) .feature-media-col { order: 2; }
+
+.feature-media-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.feature-media {
   position: relative;
-  flex: 0 0 clamp(280px, 38vw, 520px);
-  aspect-ratio: 3 / 2;
+  display: block;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 10px;
+  background: #000;
   isolation: isolate;
 }
-.showcase-thumb {
+/* Match each card's frame to its cover's native ratio so the whole image shows */
+.feature-media:has(.feature-thumb-1) { aspect-ratio: 4 / 3; }    /* Respond 404 — squarish frame fits the 5:4 cover with minimal crop */
+/* Respond 404 trailer is wider (≈16:9) than the frame → show it whole, letterboxed with black bars */
+.feature-media:has(.feature-thumb-1) .feature-preview { object-fit: contain; background: #000; }
+.feature-media:has(.feature-thumb-4) { aspect-ratio: 3 / 2; }    /* Tarduck — 1268×845 */
+.feature-media:has(.feature-thumb-5) { aspect-ratio: 1.43; }     /* Invisible Egyptian — 2477×1731 */
+/* thumb-2 (Cook) & thumb-3 (Interstellar) are ~16:9 already → keep default */
+.feature-thumb {
   position: absolute;
   inset: 0;
   z-index: 0;
   background-size: cover;
   background-position: center;
-  animation: kenburns 18s ease-in-out infinite alternate;
+  transition: transform 0.6s ease;
 }
-@keyframes kenburns {
-  from { transform: scale(1) translate(0, 0); }
-  to   { transform: scale(1.12) translate(-2%, -1%); }
-}
-.showcase-card::after {
-  content: "";
+.feature:hover .feature-thumb { transform: scale(1.04); }
+.feature-preview {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 25%, rgba(0,0,0,0.8) 100%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
   pointer-events: none;
 }
-.showcase-overlay {
-  position: absolute;
-  z-index: 2;
-  left: clamp(20px, 3vw, 36px);
-  right: clamp(20px, 3vw, 36px);
-  bottom: clamp(20px, 3vw, 36px);
-  color: #fff;
+.feature:hover .feature-preview { opacity: 1; }
+.feature-media:hover { opacity: 1; }  /* override global a:hover opacity */
+.feature-caption {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
 }
-.showcase-overlay h3 {
-  font-family: var(--font-display);
-  font-size: clamp(26px, 2.8vw, 40px);
-  font-weight: 400;
-  line-height: 1.1;
-  margin-bottom: 10px;
-}
-.showcase-desc {
-  font-size: clamp(13px, 1vw, 15px);
-  line-height: 1.45;
-  opacity: 0.9;
-  margin-bottom: 12px;
-  max-width: 32em;
-}
-.showcase-tag {
+
+.feature-info { min-width: 0; }
+.feature-award {
+  display: inline-block;
+  align-self: flex-start;
+  color: #4c1d95;
+  background: #f59e0b;
   font-size: 12px;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  opacity: 0.7;
+  margin-bottom: 12px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  box-shadow: 0 3px 10px rgba(245, 158, 11, 0.4);
 }
-.showcase-thumb-1 { background-image: url('images/respond-to-signal-404-showcase.png'); }
-.showcase-thumb-2 {
-  background-image: url('images/interstellar-adventure-rocket.png');
-  background-size: auto 45%;
-  background-repeat: no-repeat;
-  background-position: center 10%;
-  background-color: #000;
+.feature-info h3 {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.6vw, 38px);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 8px;
 }
-.showcase-thumb-3 { background-image: url('images/cook-human-on-time-showcase.jpg'); }
-.showcase-thumb-4 { background-image: url('images/tarduck-showcase.png'); }
+.feature-info h3 a:hover { opacity: 0.6; }
+.feature-tagline {
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.5;
+  color: var(--fg);
+  margin-bottom: 18px;
+}
+.feature-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.feature-meta > div {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 14px;
+}
+.feature-meta dt {
+  flex: 0 0 auto;
+  min-width: 88px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.feature-meta dd { font-size: 14px; color: var(--fg); }
+.feature-kf-title {
+  font-family: var(--font-display);
+  font-size: clamp(15px, 1.2vw, 18px);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.feature-kf {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.feature-kf li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--fg);
+}
+.feature-kf li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e8590c;
+}
+@media (max-width: 760px) {
+  .feature { grid-template-columns: 1fr; }
+  .feature:nth-child(even) .feature-media-col { order: 0; }  /* image always on top when stacked */
+}
+.feature-thumb-1 { background-image: url('images/respond-to-signal-404.png'); }
+.feature-thumb-2 { background-image: url('images/cook-human-on-time.png'); }
+.feature-thumb-3 { background-image: url('images/interstellar-adventure.png'); }
+.feature-thumb-4 { background-image: url('images/tarduck-showcase.png'); }
+.feature-thumb-5 { background-image: url('images/invisible-egyptian-2023.jpg'); }
 
 /* ---------- All projects flat grid ---------- */
 .grid-all {
@@ -399,7 +435,8 @@ a:hover { opacity: 0.6; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .showcase-thumb { animation: none; }
+  .feature-thumb { transition: none; }
+  .feature:hover .feature-thumb { transform: none; }
 }
 
 /* ---------- About page ---------- */
@@ -687,6 +724,20 @@ body.project-page.p-tarduck {
     #2a2e1e;
   background-blend-mode: overlay, normal, normal;
 }
+/* Invisible Egyptian — warm tomb / sandstone bg scraped from the itch page. */
+body.project-page.p-egyptian {
+  background:
+    /* white vertical fade on both sides → calms the busy edges, keeps the centre vivid */
+    linear-gradient(to right,
+      rgba(202, 216, 240, 0.96) 0%,
+      rgba(202, 216, 240, 0) 14%,
+      rgba(202, 216, 240, 0) 86%,
+      rgba(202, 216, 240, 0.96) 100%) fixed,
+    /* faint cool blue wash over the whole image */
+    linear-gradient(rgba(40, 70, 150, 0.14), rgba(40, 70, 150, 0.14)) fixed,
+    url('images/invisible-egyptian-2023-bg.jpg') center / cover no-repeat fixed,
+    #dbe3f0;
+}
 body.project-page .project,
 body.project-page .footer {
   background: rgba(245, 243, 238, 0.68);
@@ -704,6 +755,9 @@ body.project-page.p-cook .footer { background: rgba(245, 243, 238, 0.8); }
 /* Tarduck — more opaque cream card over the busy dark camo bg */
 body.project-page.p-tarduck .project,
 body.project-page.p-tarduck .footer { background: rgba(245, 243, 238, 0.82); }
+/* Invisible Egyptian — more opaque cream card over the bright tomb bg */
+body.project-page.p-egyptian .project,
+body.project-page.p-egyptian .footer { background: rgba(245, 243, 238, 0.94); }
 
 /* Twinkling star field — fixed to viewport, sits between bg image and content card */
 .star-field {
@@ -872,6 +926,9 @@ body.p-cook .project-h2 { color: #ea580c; }
 body.p-cook .project-title { color: #b45309; }
 /* Tarduck — brighter khaki-gold (土黄) title; luminous but still earthy/military */
 body.p-tarduck .project-title { color: #c9a227; }
+/* Invisible Egyptian — deep blue title + brighter blue headings */
+body.p-egyptian .project-title { color: #1e3a8a; }
+body.p-egyptian .project-h2 { color: #2563eb; }
 
 /* Respond to Signal 404 — rainfall canvas sits behind the content card (z-index 0 < card's
    z-index 1), so the rain reads mainly in the side gutters. Drawn by the inline script in the page. */
@@ -1049,6 +1106,8 @@ kbd {
 @media (max-width: 600px) {
   .project-shots { grid-template-columns: 1fr; }
 }
+/* Invisible Egyptian — lead photo spans the full row, the rest stay two-per-row */
+body.p-egyptian .project-shots img:first-child { grid-column: 1 / -1; }
 .project-download-wrap {
   margin-top: 18px !important;
 }
@@ -1179,4 +1238,67 @@ img {
   -webkit-user-drag: none;
   user-select: none;
   -webkit-user-select: none;
+}
+
+/* 左侧目录轨道（仅首页）：橙子贴项目左侧走 S 型往下滚，画出可见轨迹，
+   滚到每个精选项目中部时在橙子那行右对齐显示项目名。
+   想调：--roll-size 直径、轨迹颜色/粗细见 .roll-track-path、标签样式见 .roll-label；
+   摆幅/弯数/贴边间隙（ROUNDS/GAP/MIN_LEFT）在 index.html 末尾脚本里改。 */
+.roll-rail {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;          /* 整条轨道不挡点击 */
+  z-index: -1;                   /* 在内容/Hero 大图之下：在 hero 上被背景图盖住(隐形)，到下方左侧空白才露出 */
+  opacity: 0;                    /* 默认藏起；到 Selected Games 标题处由 JS 加 .is-active 淡入 */
+  transition: opacity 0.12s ease; /* 快速淡入：避免渐变期间橙子已下滑、看着偏低 */
+}
+.roll-rail.is-active { opacity: 1; }
+.roll-track {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.roll-track-path {
+  fill: none;
+  stroke: #f59e0b;               /* 轨迹颜色（暖橙黄）；想更淡改 opacity */
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+.roll-orange {
+  --roll-size: 52px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--roll-size);
+  height: var(--roll-size);
+  background: url('images/orange-roll.png') center / contain no-repeat;
+  will-change: transform;        /* 位移/旋转由 JS 控制 */
+}
+.roll-label {
+  position: absolute;
+  top: 0;                        /* 竖直位置由 JS 给（橙子顶部）；translateY(-100%) 让标签落在橙子正上方 */
+  right: 0;
+  transform: translateY(-100%);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(14px, 1.3vw, 20px);
+  letter-spacing: 0.01em;
+  color: #e8590c;
+  white-space: nowrap;           /* 名字不换行，向左伸进空白，绝不越过边框 */
+  background: var(--bg);         /* 同页面底色：盖住文字后面那段轨迹，让字下方不露线 */
+  padding: 2px 6px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.roll-label.is-visible { opacity: 1; }
+
+/* intro 橙子动画播放时先藏整条轨道，避免和掉落橙子打架 */
+body.intro-playing .roll-rail { opacity: 0; }
+
+/* 窄屏左侧没有空白，藏起来免得顶到内容 */
+@media (max-width: 900px) {
+  .roll-rail { display: none; }
 }
