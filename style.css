@@ -456,7 +456,6 @@ a:hover { opacity: 0.6; }
   line-height: 1.5;
   margin-bottom: 64px;
   color: var(--muted);
-  max-width: 640px;
 }
 .about-block, .personal-block {
   margin-bottom: 64px;
