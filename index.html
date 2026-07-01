@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="home">
+  <!-- 开屏橙子掉落动画：2026-07-01 临时关闭以先上线一版。要恢复：删掉本段外层注释即可，物理参数与脚本都保留未动。
   <div class="intro" data-intro>
     <button class="intro-skip" type="button" data-en="Skip ↘" data-zh="跳过 ↘">Skip ↘</button>
     <svg class="intro-canopy" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -21,6 +22,8 @@
       </g>
     </svg>
   </div>
+  -->
+  <!-- 注：initIntro() 会 `if (!intro) return`，覆盖层不存在时脚本自动跳过，无副作用；body 不会加 intro-playing，页面正常可滚。 -->
 
   <!-- 左侧目录轨道：橙子走 S 型往下滚，画出可见轨迹，到每个精选项目中部标注项目名（脚本在文件末尾） -->
   <div class="roll-rail" aria-hidden="true">
@@ -223,6 +226,7 @@
       </a>
     </div>
 
+    <!-- Art 区：2026-07-01 临时关闭（内容还是占位 ga-thumb-1/2）以先上线一版。要恢复：删掉本段外层注释，并替换成真图。
     <h3 class="section-subtitle" data-en="Art" data-zh="美术">Art</h3>
     <div class="grid-all">
       <a href="#" class="grid-item">
@@ -236,6 +240,7 @@
         <p data-en="Placeholder · replace me" data-zh="占位 · 待替换">Placeholder · replace me</p>
       </a>
     </div>
+    -->
   </section>
 
   <footer class="footer">
