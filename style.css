@@ -1,3 +1,7 @@
+/* Chinese webfont — Noto Sans SC (思源黑体), YaHei/PuHuiTi-like, loaded for CN text.
+   @import must stay at the very top of the file (before any rule). */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap');
+
 :root {
   --bg: #f5f3ee;
   --fg: #1a1a1a;
@@ -10,11 +14,20 @@
 
   --max: 1280px;
   --pad: clamp(20px, 4vw, 56px);
+
+  /* Watermark (see "Site-wide watermark" below) — the two knobs worth touching.
+     --wm-opacity: overall strength, 0 = off. Because the layer inverts its backdrop rather
+     than tinting it, a small number goes a long way — 0.12 shifts the page about 28/255.
+     --wm-size: one tile, so smaller = denser. */
+  --wm-opacity: 0.12;
+  --wm-size: 240px 150px;
 }
 
-/* Chinese has no Times New Roman glyphs — unify CN typography to the sans-serif nav font */
+/* Chinese has no Times New Roman glyphs — use Noto Sans SC (思源黑体) for all CN text,
+   falling back to the system sans stack (雅黑 / 苹方) if the webfont hasn't loaded. */
 html[lang="zh"] {
-  --font-display: var(--font-body);
+  --font-display: "Noto Sans SC", var(--font-body);
+  --font-body: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,6 +42,30 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+
+/* ---------- Site-wide watermark ----------
+   A full-viewport tiled "Cheng Min" over every page. It lives on body::after, so no page
+   markup is involved and any new page inherits it just by linking this stylesheet.
+   Legibility does NOT come from the mark's own colour: the layer is pure white composited
+   with mix-blend-mode: difference — the same trick .nav uses — so it inverts whatever sits
+   behind it. Dark over the cream body, light over the dark project backgrounds, and it
+   keeps working over photos and video that change colour mid-page.
+   Tune it from :root at the top of the file; to change the wording, edit the text near the
+   end of the SVG data URI below. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 10000; /* above the intro overlay (9999) so nothing covers it */
+  pointer-events: none; /* never intercepts clicks, scrolling or text selection */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='150'%3E%3Ctext x='120' y='75' transform='rotate(-30 120 75)' text-anchor='middle' dominant-baseline='middle' font-family='Georgia, Times New Roman, serif' font-style='italic' font-size='18' fill='white'%3ECheng Min%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: var(--wm-size);
+  mix-blend-mode: difference; /* inverts the backdrop instead of painting a fixed colour */
+  opacity: var(--wm-opacity);
+}
+/* Homepage only — lighter watermark. Second-level (project) pages keep the :root 0.12. */
+body.home { --wm-opacity: 0.06; }
 
 a { color: inherit; text-decoration: none; }
 a:hover { opacity: 0.6; }
@@ -417,10 +454,11 @@ a:hover { opacity: 0.6; }
 .grid-thumb-9  { background-image: url('images/farting-symphony.png'); }
 .grid-thumb-10 { background-image: url('images/hypha.png'); }
 .grid-thumb-11 { background-image: url('images/grandmasday.png'); }
+.grid-thumb-12 { background-image: url('images/weaving-shu-brocade.jpg'); }
 
 /* Game Art — placeholder tiles (warm gradients matching site accent). */
 /* Replace each with: background-image: url('images/game-art-N.jpg'); */
-.ga-thumb-1 { background: linear-gradient(135deg, #f59e0b 0%, #e8590c 100%); }
+.ga-thumb-1 { background: url('images/egyptian-concept-cover.png') center / cover no-repeat; }
 .ga-thumb-2 { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); }
 .ga-thumb-3 { background: linear-gradient(135deg, #e8590c 0%, #c2410c 100%); }
 .ga-thumb-4 { background: linear-gradient(135deg, #fcd34d 0%, #fb923c 100%); }
@@ -737,6 +775,17 @@ body.project-page.p-egyptian {
     url('images/invisible-egyptian-2023-bg.jpg') center / cover no-repeat fixed,
     #dbe3f0;
 }
+/* Weaving Shu Brocade — a pale brocade illustration framed by peach medallions. Left at
+   full strength the fine gold linework is busy enough to fight the content card beside it,
+   so a flat black veil knocks the whole backdrop down and lets it recede.
+   22% is the point where the pattern settles without the art greying out — past ~30% the
+   peach turns muddy brown. Raise or lower that one alpha to taste. */
+body.project-page.p-shujin {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)) fixed,
+    url('images/shu-brocade-bg.jpg') center / cover no-repeat fixed,
+    #f7ece0;
+}
 body.project-page .project,
 body.project-page .footer {
   background: rgba(245, 243, 238, 0.68);
@@ -745,6 +794,10 @@ body.project-page .footer {
   position: relative;
   z-index: 1;
 }
+/* Weaving Shu Brocade — the backdrop is very light (centre ≈ #f9eadb), so the card needs
+   to be near-opaque to hold contrast for the body copy. */
+body.project-page.p-shujin .project,
+body.project-page.p-shujin .footer { background: rgba(250, 246, 240, 0.94); }
 /* Respond to Signal 404 — more opaque cream card so the green bg bleeds through less */
 body.project-page.p-signal404 .project,
 body.project-page.p-signal404 .footer { background: rgba(245, 243, 238, 0.8); }
@@ -928,6 +981,19 @@ body.p-tarduck .project-title { color: #c9a227; }
 /* Invisible Egyptian — deep blue title + brighter blue headings */
 body.p-egyptian .project-title { color: #1e3a8a; }
 body.p-egyptian .project-h2 { color: #2563eb; }
+/* Weaving Shu Brocade — the project book's own wine red, with a warmer red for headings */
+body.p-shujin .project-title { color: #6f1d21; }
+body.p-shujin .project-h2 { color: #a33540; }
+/* …and the Vimeo button, so it carries the page's wine rather than the site-wide purple. */
+body.p-shujin .project-download {
+  background: rgba(111, 29, 33, 0.08);
+  border-color: rgba(111, 29, 33, 0.28);
+  color: #6f1d21;
+}
+body.p-shujin .project-download:hover {
+  background: rgba(111, 29, 33, 0.16);
+  border-color: rgba(111, 29, 33, 0.5);
+}
 
 /* Respond to Signal 404 — rainfall canvas sits behind the content card (z-index 0 < card's
    z-index 1), so the rain reads mainly in the side gutters. Drawn by the inline script in the page. */
@@ -1107,6 +1173,37 @@ kbd {
 }
 /* Invisible Egyptian — lead photo spans the full row, the rest stay two-per-row */
 body.p-egyptian .project-shots img:first-child { grid-column: 1 / -1; }
+/* The Egyptian God (concept) — wide portfolio spreads, every board spans the full width */
+body.p-concept .project-shots { grid-template-columns: 1fr; }
+/* Weaving Shu Brocade — same wide book spreads, so every board spans the full width */
+body.p-shujin .project-shots { grid-template-columns: 1fr; }
+/* The Egyptian God (concept) — purple Egyptian desert background, replaces p-egyptian's tomb bg.
+   Later in the source than the .p-egyptian rule, so it wins at equal specificity. */
+body.project-page.p-concept {
+  background:
+    url('images/egyptian-concept-bg.png') center / cover no-repeat fixed,
+    #d6c8e6;
+}
+/* The Egyptian God (concept) — override p-egyptian's blue: red-leaning saturated purple title + deeper purple headings */
+body.p-concept .project-title { color: #7a1a99; }
+body.p-concept .project-h2 { color: #4c1d7a; }
+/* The Egyptian God (concept) — the light lavender background turns the difference-blend
+   white nav into a murky green. Drop the blend here and use a solid deep purple that reads
+   on both the pale sky and the cream card. */
+body.project-page.p-concept .nav {
+  mix-blend-mode: normal;
+  color: #fff;
+}
+/* Cook Human On Time — solid white nav (no difference blend) */
+body.project-page.p-cook .nav {
+  mix-blend-mode: normal;
+  color: #fff;
+}
+/* Weaving Shu Brocade — solid saturated wine-red nav (no difference blend) */
+body.project-page.p-shujin .nav {
+  mix-blend-mode: normal;
+  color: #a31d34;
+}
 .project-download-wrap {
   margin-top: 18px !important;
 }

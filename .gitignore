@@ -1,0 +1,6 @@
+# Claude Code / AI tool state — never commit (keeps AI tooling out of the public repo)
+.claude/
+
+# OS junk
+.DS_Store
+Thumbs.db
